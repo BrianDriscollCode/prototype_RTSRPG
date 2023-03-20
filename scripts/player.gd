@@ -22,6 +22,7 @@ var viablePositions = [];
 ### Lifecycle Functions
 func _ready():
 	checkIfCurrent();
+	print("test");
 		
 	playerPosition = tileMap.world_to_map(self.global_position);
 	for item in viablePositionsObject.get_children():
