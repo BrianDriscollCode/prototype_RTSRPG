@@ -1,0 +1,762 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://tilemaps/terrain.tres" type="TileSet" id=1]
+[ext_resource path="res://tilemaps/GreenTile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/highlights.gd" type="Script" id=3]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/effects/green2.png" type="Texture" id=5]
+[ext_resource path="res://scripts/LevelState.gd" type="Script" id=6]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="LevelState" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 14, 0, 1, 14, 0, 2, 14, 0, 3, 14, 0, 4, 14, 0, 5, 14, 0, 6, 14, 0, 7, 14, 0, 8, 14, 0, 9, 14, 0, 10, 14, 0, 11, 14, 0, 12, 14, 0, 13, 14, 0, 14, 14, 0, 15, 14, 0, 16, 14, 0, 17, 14, 0, 18, 14, 0, 19, 14, 0, 65536, 14, 0, 65537, 14, 0, 65538, 14, 0, 65539, 14, 0, 65540, 8, 0, 65541, 14, 0, 65542, 14, 0, 65543, 29, 0, 65544, 14, 0, 65545, 14, 0, 65546, 14, 0, 65547, 14, 0, 65548, 29, 0, 65549, 14, 0, 65550, 14, 0, 65551, 8, 0, 65552, 14, 0, 65553, 14, 0, 65554, 14, 0, 65555, 14, 0, 131072, 14, 0, 131073, 40, 0, 131074, 40, 0, 131075, 40, 0, 131076, 40, 0, 131077, 40, 0, 131078, 40, 0, 131079, 40, 0, 131080, 40, 0, 131081, 40, 0, 131082, 40, 0, 131083, 40, 0, 131084, 40, 0, 131085, 40, 0, 131086, 40, 0, 131087, 40, 0, 131088, 40, 0, 131089, 40, 0, 131090, 40, 0, 131091, 14, 0, 196608, -1073741822, 0, 196609, -1073741775, 0, 196610, -1073741775, 0, 196611, -1073741775, 0, 196612, 49, 0, 196613, 49, 0, 196614, 49, 0, 196615, 49, 0, 196616, 49, 0, 196617, 49, 0, 196618, 49, 0, 196619, 49, 0, 196620, 49, 0, 196621, 49, 0, 196622, 49, 0, 196623, 49, 0, 196624, -1073741775, 0, 196625, -1073741775, 0, 196626, -1073741775, 0, 196627, -1610612734, 0, 262144, -1073741822, 0, 262145, -1073741775, 0, 262146, -1073741775, 0, 262147, -1073741775, 0, 262148, 49, 0, 262149, 49, 0, 262150, 49, 0, 262151, 49, 0, 262152, 49, 0, 262153, 49, 0, 262154, 49, 0, 262155, 49, 0, 262156, 49, 0, 262157, 49, 0, 262158, 49, 0, 262159, 49, 0, 262160, -1073741775, 0, 262161, -1073741775, 0, 262162, -1073741775, 0, 262163, -1610612734, 0, 327680, -1073741822, 0, 327681, -1073741775, 0, 327682, -1073741775, 0, 327683, -1073741775, 0, 327684, 49, 0, 327685, 49, 0, 327686, 49, 0, 327687, 49, 0, 327688, 49, 0, 327689, 49, 0, 327690, 49, 0, 327691, 49, 0, 327692, 49, 0, 327693, 49, 0, 327694, 49, 0, 327695, 49, 0, 327696, -1073741775, 0, 327697, -1073741775, 0, 327698, -1073741775, 0, 327699, -1610612734, 0, 393216, -1073741779, 0, 393217, -1073741775, 0, 393218, -1073741775, 0, 393219, -1073741775, 0, 393220, 49, 0, 393221, 49, 0, 393222, 49, 0, 393223, 49, 0, 393224, 49, 0, 393225, 49, 0, 393226, 49, 0, 393227, 49, 0, 393228, 49, 0, 393229, 49, 0, 393230, 49, 0, 393231, 49, 0, 393232, -1073741775, 0, 393233, -1073741775, 0, 393234, -1073741775, 0, 393235, -1610612691, 0, 458752, -1073741822, 0, 458753, -1073741775, 0, 458754, -1073741775, 0, 458755, -1073741775, 0, 458756, 49, 0, 458757, 49, 0, 458758, 49, 0, 458759, 49, 0, 458760, 49, 0, 458761, 49, 0, 458762, 49, 0, 458763, 49, 0, 458764, 49, 0, 458765, 49, 0, 458766, 49, 0, 458767, 49, 0, 458768, -1073741775, 0, 458769, -1073741775, 0, 458770, -1073741775, 0, 458771, -1610612734, 0, 524288, -1073741822, 0, 524289, -1073741775, 0, 524290, -1073741775, 0, 524291, -1073741775, 0, 524292, 49, 0, 524293, 49, 0, 524294, 49, 0, 524295, 49, 0, 524296, 49, 0, 524297, 49, 0, 524298, 49, 0, 524299, 49, 0, 524300, 49, 0, 524301, 49, 0, 524302, 49, 0, 524303, 49, 0, 524304, -1073741775, 0, 524305, -1073741775, 0, 524306, -1073741775, 0, 524307, -1610612734, 0, 589824, -1073741822, 0, 589825, -1073741775, 0, 589826, -1073741775, 0, 589827, -1073741775, 0, 589828, -1073741775, 0, 589829, -1073741775, 0, 589830, -1073741775, 0, 589831, -1073741775, 0, 589832, -1073741775, 0, 589833, -1073741775, 0, 589834, -1073741775, 0, 589835, -1073741775, 0, 589836, -1073741775, 0, 589837, -1073741775, 0, 589838, -1073741775, 0, 589839, -1073741775, 0, 589840, -1073741775, 0, 589841, -1073741775, 0, 589842, -1073741775, 0, 589843, -1610612734, 0, 655360, -1073741822, 0, 655361, -1073741775, 0, 655362, -1073741775, 0, 655363, -1073741775, 0, 655364, -1073741775, 0, 655365, -1073741775, 0, 655366, -1073741775, 0, 655367, -1073741775, 0, 655368, -1073741775, 0, 655369, -1073741775, 0, 655370, -1073741775, 0, 655371, -1073741775, 0, 655372, -1073741775, 0, 655373, -1073741775, 0, 655374, -1073741775, 0, 655375, -1073741775, 0, 655376, -1073741775, 0, 655377, -1073741775, 0, 655378, -1073741775, 0, 655379, -1610612734, 0, 720896, 1610612739, 0, 720897, 1610612738, 0, 720898, 1610612738, 0, 720899, 1610612738, 0, 720900, 1610612738, 0, 720901, 1610612738, 0, 720902, 1610612738, 0, 720903, 1610612738, 0, 720904, 1610612738, 0, 720905, 1610612738, 0, 720906, 1610612738, 0, 720907, 1610612738, 0, 720908, 1610612738, 0, 720909, 1610612738, 0, 720910, 1610612738, 0, 720911, 1610612738, 0, 720912, 1610612738, 0, 720913, 1610612738, 0, 720914, 1610612738, 0, 720915, -1610612733, 0 )
+
+[node name="ViablePositions" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="GreenTile" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile2" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile3" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile4" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile5" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile6" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile73" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile74" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile99" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile100" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile101" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile102" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile103" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile104" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile105" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile106" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile107" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile108" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile109" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile110" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile111" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile112" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile113" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile114" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile115" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile116" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile117" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile118" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile119" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile120" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile121" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile122" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile75" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 88, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile76" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 88, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile77" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 104, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile78" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 104, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile79" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 120, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile80" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 120, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile81" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 136, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile82" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 136, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile83" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 152, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile84" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 152, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile85" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 168, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile86" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 168, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile87" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 184, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile88" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 184, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile89" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 200, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile90" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 200, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile91" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 216, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile92" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 216, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile93" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 216, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile94" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 216, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile95" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 232, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile96" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 232, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile97" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 248, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile98" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 248, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile7" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 88, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile8" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 88, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile9" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 88, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile10" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 88, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile11" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 88, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile12" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 88, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile13" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 104, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile14" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 104, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile15" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 104, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile16" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 104, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile17" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 104, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile18" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 104, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile19" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 120, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile20" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 120, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile21" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 120, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile22" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 120, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile23" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 120, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile24" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 120, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile25" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 136, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile26" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 136, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile27" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 136, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile28" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 136, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile29" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 136, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile30" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 136, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile31" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 152, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile32" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 152, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile33" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 152, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile34" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 152, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile35" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 152, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile36" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 152, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile37" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 168, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile38" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 168, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile39" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 168, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile40" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 168, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile41" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 168, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile42" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 168, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile43" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 184, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile44" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 184, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile45" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 184, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile46" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 184, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile47" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 184, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile48" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 184, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile49" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 200, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile50" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 200, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile51" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 200, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile52" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 200, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile53" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 200, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile54" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 200, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile55" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 216, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile56" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 216, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile57" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 216, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile58" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 216, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile59" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 216, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile60" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 216, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile61" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 232, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile62" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 232, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile63" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 232, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile64" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 232, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile65" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 232, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile66" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 232, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile67" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 248, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile68" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 248, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile69" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 248, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile70" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 248, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile71" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 248, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile72" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 248, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile123" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 264, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile124" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 264, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile125" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 264, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile126" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 264, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile127" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 264, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile128" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 264, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile129" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 264, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile130" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 264, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile131" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 280, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile132" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 280, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile133" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 280, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile134" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 280, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile135" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 280, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile136" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 280, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile137" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 280, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile138" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 280, 136 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile139" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 296, 152 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile140" parent="ViablePositions" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 296, 168 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile141" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 296, 56 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile142" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 296, 72 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile143" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 296, 88 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile144" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 296, 104 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile145" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 296, 120 )
+texture = ExtResource( 5 )
+
+[node name="GreenTile146" type="Sprite" parent="ViablePositions"]
+visible = false
+position = Vector2( 296, 136 )
+texture = ExtResource( 5 )
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="Party" type="Node2D" parent="."]
+
+[node name="Player" parent="Party" instance=ExtResource( 4 )]
+position = Vector2( 40, 106 )
+
+[node name="Player2" parent="Party" instance=ExtResource( 4 )]
+position = Vector2( 40, 59 )
