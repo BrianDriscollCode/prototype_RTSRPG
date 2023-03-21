@@ -1,16 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/effects/progressBar.png" type="Texture" id=1]
 [ext_resource path="res://assets/effects/progressBarFiller.png" type="Texture" id=2]
 [ext_resource path="res://assets/effects/characterSelctionKnight.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/tile_0096.png" type="Texture" id=4]
 [ext_resource path="res://scripts/player.gd" type="Script" id=5]
+[ext_resource path="res://player/knight.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.0
 height = 0.0
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="Knight" type="KinematicBody2D"]
 script = ExtResource( 5 )
 
 [node name="SelectedBackground" type="TextureRect" parent="."]
@@ -28,20 +29,6 @@ texture = ExtResource( 4 )
 position = Vector2( 0, -1 )
 shape = SubResource( 1 )
 
-[node name="step1" type="Timer" parent="."]
-one_shot = true
-autostart = true
-
-[node name="step2" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-autostart = true
-
-[node name="step3" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-autostart = true
-
 [node name="TurnProgressBar" type="TextureProgress" parent="."]
 margin_left = -8.0
 margin_top = -14.0
@@ -50,6 +37,41 @@ margin_bottom = 26.0
 texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 2 )
 
-[connection signal="timeout" from="step1" to="." method="_on_step1_timeout"]
-[connection signal="timeout" from="step2" to="." method="_on_step2_timeout"]
-[connection signal="timeout" from="step3" to="." method="_on_step3_timeout"]
+[node name="class" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="KnightTimer1" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="KnightTimer2" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="KnightTimer3" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="KnightTimer4" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="KnightTimer5" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="KnightTimer6" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="KnightTimer1" to="." method="_on_KnightTime1_timeout"]
+[connection signal="timeout" from="KnightTimer2" to="." method="_on_KnightTime2_timeout"]
+[connection signal="timeout" from="KnightTimer3" to="." method="_on_KnightTime3_timeout"]
+[connection signal="timeout" from="KnightTimer4" to="." method="_on_KnightTime4_timeout"]
+[connection signal="timeout" from="KnightTimer5" to="." method="_on_KnightTime5_timeout"]
+[connection signal="timeout" from="KnightTimer6" to="." method="_on_KnightTime6_timeout"]

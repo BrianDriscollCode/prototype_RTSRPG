@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/effects/progressBar.png" type="Texture" id=1]
+[ext_resource path="res://assets/effects/progressBarFiller.png" type="Texture" id=2]
+[ext_resource path="res://assets/effects/CharacterSelectionRogue.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/tile_0112.png" type="Texture" id=4]
+[ext_resource path="res://scripts/player.gd" type="Script" id=5]
+[ext_resource path="res://player/rogue.gd" type="Script" id=6]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 7.0
+height = 0.0
+
+[node name="Rogue" type="KinematicBody2D"]
+script = ExtResource( 5 )
+
+[node name="SelectedBackground" type="TextureRect" parent="."]
+margin_left = -12.0
+margin_top = -13.0
+margin_right = 28.0
+margin_bottom = 27.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -2 )
+texture = ExtResource( 4 )
+
+[node name="playerCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -1 )
+shape = SubResource( 1 )
+
+[node name="TurnProgressBar" type="TextureProgress" parent="."]
+margin_left = -8.0
+margin_top = -14.0
+margin_right = 32.0
+margin_bottom = 26.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+
+[node name="class" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="RogueTimer1" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="RogueTimer2" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="RogueTimer3" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="RogueTimer1" to="." method="_on_RogueTimer1_timeout"]
+[connection signal="timeout" from="RogueTimer2" to="." method="_on_RogueTimer2_timeout"]
+[connection signal="timeout" from="RogueTimer3" to="." method="_on_RogueTimer3_timeout"]

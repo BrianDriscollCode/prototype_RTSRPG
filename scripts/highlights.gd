@@ -1,8 +1,9 @@
 extends Node2D
 
-#Current Player
 var currentCharacter;
+var currentCharacterClass;
 onready var levelState = get_node("../LevelState");
+
 
 #Tiles and Mouse Position
 var mousePosition;
@@ -14,7 +15,6 @@ onready var tiles = get_node("../TileMap").get_used_cells();
 #Player position and move positions
 var playerPosition;
 var convertedPlayerPosition;
-var right1; var right2; var left1; var left2; var up1; var up2; var down1; var down2
 var viableMove = false;
 
 func _ready():
@@ -48,12 +48,13 @@ func matchToTile():
 	
 func getCurrentPlayer():
 	currentCharacter = levelState.returnCurrentCharacter();
+	currentCharacterClass = levelState.returnCurrentCharacterClass();
 	
 func showPlayerMovementRange():
 	viableMove = false;
 	playerPosition = currentCharacter.global_position;
 	convertedPlayerPosition = tileMap.world_to_map(playerPosition);
-	var allMoves = aggregateViablePlayerMoves();
+	var allMoves = aggregateViablePlayerMoves(currentCharacterClass);
 	
 	var canMove = getCanCharacterMove();
 
@@ -62,38 +63,76 @@ func showPlayerMovementRange():
 		if canMove:
 			if convertedPlayerPosition == currentTile:
 				item.set_visible(true)
-			if right1 == currentTile:
-				item.set_visible(true)
-			if right2 == currentTile:
-				item.set_visible(true)
-			if left1 == currentTile:
-				item.set_visible(true)
-			if left2 == currentTile:
-				item.set_visible(true)
-			if up1 == currentTile:
-				item.set_visible(true)
-			if up2 == currentTile:
-				item.set_visible(true)
-			if down1 == currentTile:
-				item.set_visible(true)
-			if down2 == currentTile:
-				item.set_visible(true)
+			for position in allMoves:
+				if position == currentTile:
+					item.set_visible(true);
+#			if right1 == currentTile:
+#				item.set_visible(true)
+#			if right2 == currentTile:
+#				item.set_visible(true)
+#			if left1 == currentTile:
+#				item.set_visible(true)
+#			if left2 == currentTile:
+#				item.set_visible(true)
+#			if up1 == currentTile:
+#				item.set_visible(true)
+#			if up2 == currentTile:
+#				item.set_visible(true)
+#			if down1 == currentTile:
+#				item.set_visible(true)
+#			if down2 == currentTile:
+#				item.set_visible(true)
 
 	
-func aggregateViablePlayerMoves():
-	right1 = convertedPlayerPosition + Vector2(1, 0)
-	right2 = convertedPlayerPosition + Vector2(2, 0)
-	left1 = convertedPlayerPosition - Vector2(1, 0)
-	left2 = convertedPlayerPosition - Vector2(2, 0)
-	up1 = convertedPlayerPosition + Vector2(0, 1)
-	up2 = convertedPlayerPosition + Vector2(0, 2)
-	down1 = convertedPlayerPosition - Vector2(0, 1)
-	down2 = convertedPlayerPosition - Vector2(0, 2)
+func aggregateViablePlayerMoves(characterClass):
+	var right1;
+	var right2;
+	var right3;
+	var left1;
+	var left2;
+	var left3;
+	var up1;
+	var up2;
+	var up3;
+	var down1;
+	var down2;
+	var down3;
 	
-	return [right1, right2, left1, left2, up1, up2, down1, down2];
+	if characterClass == "Wizard": 
+		right1 = convertedPlayerPosition + Vector2(1, 0)
+		right2 = convertedPlayerPosition + Vector2(2, 0)
+		left1 = convertedPlayerPosition - Vector2(1, 0)
+		left2 = convertedPlayerPosition - Vector2(2, 0)
+		up1 = convertedPlayerPosition + Vector2(0, 1)
+		up2 = convertedPlayerPosition + Vector2(0, 2)
+		down1 = convertedPlayerPosition - Vector2(0, 1)
+		down2 = convertedPlayerPosition - Vector2(0, 2)
+		return [right1, right2, left1, left2, up1, up2, down1, down2];
+	
+	if characterClass == "Knight": 
+		right1 = convertedPlayerPosition + Vector2(1, 0)
+		left1 = convertedPlayerPosition - Vector2(1, 0)
+		up1 = convertedPlayerPosition + Vector2(0, 1)
+		down1 = convertedPlayerPosition - Vector2(0, 1)
+		return [right1, left1, up1, down1];
+		
+	if characterClass == "Rogue": 
+		right1 = convertedPlayerPosition + Vector2(1, 0)
+		right2 = convertedPlayerPosition + Vector2(2, 0)
+		right3 = convertedPlayerPosition + Vector2(3, 0)
+		left1 = convertedPlayerPosition - Vector2(1, 0)
+		left2 = convertedPlayerPosition - Vector2(2, 0)
+		left3 = convertedPlayerPosition - Vector2(3, 0)
+		up1 = convertedPlayerPosition + Vector2(0, 1)
+		up2 = convertedPlayerPosition + Vector2(0, 2)
+		up3 = convertedPlayerPosition + Vector2(0, 3)
+		down1 = convertedPlayerPosition - Vector2(0, 1)
+		down2 = convertedPlayerPosition - Vector2(0, 2)
+		down3 = convertedPlayerPosition - Vector2(0, 3)
+		return [right1, right2, right3, left1, left2, left3, up1, up2, up3, down1, down2, down3];
 	
 func checkIfMoveViable(): 
-	var allViableMoves = aggregateViablePlayerMoves();
+	var allViableMoves = aggregateViablePlayerMoves(currentCharacterClass);
 	for item in allViableMoves:
 		if convertedMousePosition == item:
 			viableMove = true;

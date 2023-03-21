@@ -3,13 +3,12 @@ extends KinematicBody2D
 
 #LevelState
 export var currentCharacter = false;
-var currentCharacterClass;
 onready var levelState = get_node("../../LevelState");
 
 #Turn-based Variables
-onready var step1Timer = get_node("RogueTimer1");
-onready var step2Timer = get_node("RogueTimer2");
-onready var step3Timer = get_node("RogueTimer3");
+onready var step1Timer = get_node("step1");
+onready var step2Timer = get_node("step2");
+onready var step3Timer = get_node("step3");
 onready var turnProgressBar = get_node("TurnProgressBar");
 var canMove = false;
 
@@ -64,7 +63,9 @@ func checkPositionViable(position):
 func resetTurnProgress():
 	turnProgressBar.value = 0;
 	canMove = false;
-	get_node("class").restartTimers();
+	step1Timer.start();
+	step2Timer.start();
+	step3Timer.start();
 	
 func checkIfCurrent(): 
 	if (levelState.returnCurrentCharacter() == self):
@@ -82,72 +83,14 @@ func exportCanMove():
 	return canMove;
 
 ### Signals
-
-##Knight Timers
-func _on_KnightTime1_timeout():
-	turnProgressBar.value = 16
+func _on_step1_timeout():
+	turnProgressBar.value = 33;
 
 
-func _on_KnightTime2_timeout():
-	turnProgressBar.value = 33
-
-
-func _on_KnightTime3_timeout():
-	turnProgressBar.value = 49
-
-
-func _on_KnightTime4_timeout():
-	turnProgressBar.value = 65
-
-func _on_KnightTime5_timeout():
-	turnProgressBar.value = 84
-
-func _on_KnightTime6_timeout():
-	turnProgressBar.value = 100
-	canMove = true;
-
-
-##Rogue Timers
-func _on_RogueTimer1_timeout():
-	turnProgressBar.value = 33
-	
-func _on_RogueTimer2_timeout():
+func _on_step2_timeout():
 	turnProgressBar.value = 66
 
-func _on_RogueTimer3_timeout():
-	turnProgressBar.value = 100
-	canMove = true;
 
-##Wizard Timers
-
-
-func _on_WizardTimer1_timeout():
-	turnProgressBar.value = 10
-
-func _on_WizardTimer2_timeout():
-	turnProgressBar.value = 20
-
-func _on_WizardTimer3_timeout():
-	turnProgressBar.value = 30
-
-func _on_WizardTimer4_timeout():
-	turnProgressBar.value = 40
-
-func _on_WizardTimer5_timeout():
-	turnProgressBar.value = 50
-
-func _on_WizardTimer6_timeout():
-	turnProgressBar.value = 60
-
-func _on_WizardTimer7_timeout():
-	turnProgressBar.value = 70
-
-func _on_WizardTimer8_timeout():
-	turnProgressBar.value = 80
-
-func _on_WizardTimer9_timeout():
-	turnProgressBar.value = 90
-
-func _on_WizardTimer10_timeout():
-	turnProgressBar.value = 100
+func _on_step3_timeout():
+	turnProgressBar.value = 100;
 	canMove = true;

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://tilemaps/terrain.tres" type="TileSet" id=1]
 [ext_resource path="res://player/utils/ViablePositions.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/Rogue.tscn" type="PackedScene" id=3]
 [ext_resource path="res://player/Wizard.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/LevelState.gd" type="Script" id=6]
 [ext_resource path="res://player/Knight.tscn" type="PackedScene" id=7]
@@ -23,8 +24,11 @@ tile_data = PoolIntArray( 0, 14, 0, 1, 14, 0, 2, 14, 0, 3, 14, 0, 4, 14, 0, 5, 1
 
 [node name="Party" type="Node2D" parent="."]
 
-[node name="Wizard" parent="Party" instance=ExtResource( 4 )]
-position = Vector2( 40, 106 )
+[node name="Rogue" parent="Party" instance=ExtResource( 3 )]
+position = Vector2( 40, 155 )
 
 [node name="Knight" parent="Party" instance=ExtResource( 7 )]
-position = Vector2( 40, 75 )
+position = Vector2( 40, 110 )
+
+[node name="Wizard" parent="Party" instance=ExtResource( 4 )]
+position = Vector2( 40, 72 )
