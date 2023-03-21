@@ -1,0 +1,738 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/effects/green2.png" type="Texture" id=1]
+[ext_resource path="res://tilemaps/GreenTile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/highlights.gd" type="Script" id=3]
+
+[node name="ViablePositions" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="GreenTile" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile2" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile3" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile4" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile5" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile6" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile73" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile74" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 72, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile99" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile100" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile101" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile102" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile103" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile104" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile105" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile106" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 56, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile107" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile108" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile109" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile110" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile111" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile112" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile113" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile114" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 40, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile115" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile116" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile117" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile118" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile119" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile120" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile121" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile122" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 24, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile75" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 88, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile76" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 88, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile77" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 104, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile78" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 104, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile79" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 120, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile80" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 120, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile81" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 136, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile82" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 136, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile83" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 152, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile84" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 152, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile85" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 168, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile86" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 168, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile87" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 184, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile88" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 184, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile89" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 200, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile90" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 200, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile91" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 216, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile92" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 216, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile93" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 216, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile94" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 216, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile95" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 232, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile96" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 232, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile97" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 248, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile98" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 248, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile7" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 88, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile8" type="Sprite" parent="."]
+visible = false
+position = Vector2( 88, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile9" type="Sprite" parent="."]
+visible = false
+position = Vector2( 88, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile10" type="Sprite" parent="."]
+visible = false
+position = Vector2( 88, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile11" type="Sprite" parent="."]
+visible = false
+position = Vector2( 88, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile12" type="Sprite" parent="."]
+visible = false
+position = Vector2( 88, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile13" type="Sprite" parent="."]
+visible = false
+position = Vector2( 104, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile14" type="Sprite" parent="."]
+visible = false
+position = Vector2( 104, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile15" type="Sprite" parent="."]
+visible = false
+position = Vector2( 104, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile16" type="Sprite" parent="."]
+visible = false
+position = Vector2( 104, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile17" type="Sprite" parent="."]
+visible = false
+position = Vector2( 104, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile18" type="Sprite" parent="."]
+visible = false
+position = Vector2( 104, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile19" type="Sprite" parent="."]
+visible = false
+position = Vector2( 120, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile20" type="Sprite" parent="."]
+visible = false
+position = Vector2( 120, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile21" type="Sprite" parent="."]
+visible = false
+position = Vector2( 120, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile22" type="Sprite" parent="."]
+visible = false
+position = Vector2( 120, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile23" type="Sprite" parent="."]
+visible = false
+position = Vector2( 120, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile24" type="Sprite" parent="."]
+visible = false
+position = Vector2( 120, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile25" type="Sprite" parent="."]
+visible = false
+position = Vector2( 136, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile26" type="Sprite" parent="."]
+visible = false
+position = Vector2( 136, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile27" type="Sprite" parent="."]
+visible = false
+position = Vector2( 136, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile28" type="Sprite" parent="."]
+visible = false
+position = Vector2( 136, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile29" type="Sprite" parent="."]
+visible = false
+position = Vector2( 136, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile30" type="Sprite" parent="."]
+visible = false
+position = Vector2( 136, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile31" type="Sprite" parent="."]
+visible = false
+position = Vector2( 152, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile32" type="Sprite" parent="."]
+visible = false
+position = Vector2( 152, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile33" type="Sprite" parent="."]
+visible = false
+position = Vector2( 152, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile34" type="Sprite" parent="."]
+visible = false
+position = Vector2( 152, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile35" type="Sprite" parent="."]
+visible = false
+position = Vector2( 152, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile36" type="Sprite" parent="."]
+visible = false
+position = Vector2( 152, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile37" type="Sprite" parent="."]
+visible = false
+position = Vector2( 168, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile38" type="Sprite" parent="."]
+visible = false
+position = Vector2( 168, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile39" type="Sprite" parent="."]
+visible = false
+position = Vector2( 168, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile40" type="Sprite" parent="."]
+visible = false
+position = Vector2( 168, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile41" type="Sprite" parent="."]
+visible = false
+position = Vector2( 168, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile42" type="Sprite" parent="."]
+visible = false
+position = Vector2( 168, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile43" type="Sprite" parent="."]
+visible = false
+position = Vector2( 184, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile44" type="Sprite" parent="."]
+visible = false
+position = Vector2( 184, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile45" type="Sprite" parent="."]
+visible = false
+position = Vector2( 184, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile46" type="Sprite" parent="."]
+visible = false
+position = Vector2( 184, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile47" type="Sprite" parent="."]
+visible = false
+position = Vector2( 184, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile48" type="Sprite" parent="."]
+visible = false
+position = Vector2( 184, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile49" type="Sprite" parent="."]
+visible = false
+position = Vector2( 200, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile50" type="Sprite" parent="."]
+visible = false
+position = Vector2( 200, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile51" type="Sprite" parent="."]
+visible = false
+position = Vector2( 200, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile52" type="Sprite" parent="."]
+visible = false
+position = Vector2( 200, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile53" type="Sprite" parent="."]
+visible = false
+position = Vector2( 200, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile54" type="Sprite" parent="."]
+visible = false
+position = Vector2( 200, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile55" type="Sprite" parent="."]
+visible = false
+position = Vector2( 216, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile56" type="Sprite" parent="."]
+visible = false
+position = Vector2( 216, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile57" type="Sprite" parent="."]
+visible = false
+position = Vector2( 216, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile58" type="Sprite" parent="."]
+visible = false
+position = Vector2( 216, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile59" type="Sprite" parent="."]
+visible = false
+position = Vector2( 216, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile60" type="Sprite" parent="."]
+visible = false
+position = Vector2( 216, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile61" type="Sprite" parent="."]
+visible = false
+position = Vector2( 232, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile62" type="Sprite" parent="."]
+visible = false
+position = Vector2( 232, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile63" type="Sprite" parent="."]
+visible = false
+position = Vector2( 232, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile64" type="Sprite" parent="."]
+visible = false
+position = Vector2( 232, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile65" type="Sprite" parent="."]
+visible = false
+position = Vector2( 232, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile66" type="Sprite" parent="."]
+visible = false
+position = Vector2( 232, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile67" type="Sprite" parent="."]
+visible = false
+position = Vector2( 248, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile68" type="Sprite" parent="."]
+visible = false
+position = Vector2( 248, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile69" type="Sprite" parent="."]
+visible = false
+position = Vector2( 248, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile70" type="Sprite" parent="."]
+visible = false
+position = Vector2( 248, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile71" type="Sprite" parent="."]
+visible = false
+position = Vector2( 248, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile72" type="Sprite" parent="."]
+visible = false
+position = Vector2( 248, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile123" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 264, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile124" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 264, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile125" type="Sprite" parent="."]
+visible = false
+position = Vector2( 264, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile126" type="Sprite" parent="."]
+visible = false
+position = Vector2( 264, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile127" type="Sprite" parent="."]
+visible = false
+position = Vector2( 264, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile128" type="Sprite" parent="."]
+visible = false
+position = Vector2( 264, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile129" type="Sprite" parent="."]
+visible = false
+position = Vector2( 264, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile130" type="Sprite" parent="."]
+visible = false
+position = Vector2( 264, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile131" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 280, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile132" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 280, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile133" type="Sprite" parent="."]
+visible = false
+position = Vector2( 280, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile134" type="Sprite" parent="."]
+visible = false
+position = Vector2( 280, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile135" type="Sprite" parent="."]
+visible = false
+position = Vector2( 280, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile136" type="Sprite" parent="."]
+visible = false
+position = Vector2( 280, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile137" type="Sprite" parent="."]
+visible = false
+position = Vector2( 280, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile138" type="Sprite" parent="."]
+visible = false
+position = Vector2( 280, 136 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile139" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 296, 152 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile140" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 296, 168 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile141" type="Sprite" parent="."]
+visible = false
+position = Vector2( 296, 56 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile142" type="Sprite" parent="."]
+visible = false
+position = Vector2( 296, 72 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile143" type="Sprite" parent="."]
+visible = false
+position = Vector2( 296, 88 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile144" type="Sprite" parent="."]
+visible = false
+position = Vector2( 296, 104 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile145" type="Sprite" parent="."]
+visible = false
+position = Vector2( 296, 120 )
+texture = ExtResource( 1 )
+
+[node name="GreenTile146" type="Sprite" parent="."]
+visible = false
+position = Vector2( 296, 136 )
+texture = ExtResource( 1 )

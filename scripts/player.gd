@@ -16,7 +16,7 @@ var canMove = false;
 var playerPosition;
 var mousePosition;
 onready var tileMap = get_node("../../TileMap")
-onready var viablePositionsObject = get_node("../../ViablePositions");
+onready var movementTilesNode = get_node("../../movementTiles");
 var viablePositions = [];
 
 ### Lifecycle Functions
@@ -25,8 +25,9 @@ func _ready():
 	print("test");
 		
 	playerPosition = tileMap.world_to_map(self.global_position);
-	for item in viablePositionsObject.get_children():
+	for item in movementTilesNode.get_children():
 		viablePositions.append(tileMap.world_to_map(item.global_position));
+		
 		
 	
 func _process(delta):
@@ -34,6 +35,7 @@ func _process(delta):
 	if canMove:
 		getMousePosition();
 		moveCharacter();
+	setBackground();
 		
 		
 ### Logic Functions
@@ -44,14 +46,17 @@ func getMousePosition():
 func moveCharacter():
 	var globalMousePosition = tileMap.map_to_world(mousePosition) - Vector2(-8, -10);
 	var isViablePosition  = checkPositionViable(mousePosition);
+	
 	if Input.is_action_just_pressed("left_click") && isViablePosition && currentCharacter:
 		self.global_position = globalMousePosition;
 		canMove = false;
 		resetTurnProgress();
 
 func checkPositionViable(position):
+	var isViable = movementTilesNode.exportViableMove();
+	
 	for item in viablePositions:
-		if item == position:
+		if item == position && isViable:
 			return true;
 	return false;
 	
@@ -65,10 +70,17 @@ func resetTurnProgress():
 func checkIfCurrent(): 
 	if (levelState.returnCurrentCharacter() == self):
 		currentCharacter = true;
-		print(currentCharacter);
 	else: 
 		currentCharacter = false;
-		print(currentCharacter)
+		
+func setBackground():
+	if currentCharacter:
+		$SelectedBackground.set_visible(true);
+	else:
+		$SelectedBackground.set_visible(false);
+
+func exportCanMove():
+	return canMove;
 
 ### Signals
 func _on_step1_timeout():

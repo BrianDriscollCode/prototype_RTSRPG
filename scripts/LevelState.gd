@@ -14,6 +14,7 @@ func _process(delta):
 ### Logic
 func loadCharactersIntoArray():
 	for item in party.get_children():
+		print(typeof(item));
 		allCharacters.append(item);
 	currentCharacter = allCharacters[0];
 
