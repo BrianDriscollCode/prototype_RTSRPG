@@ -9,8 +9,8 @@ onready var levelState = get_node("../LevelState");
 var mousePosition;
 var convertedMousePosition;
 var highlightTiles = [];
-onready var tileMap = get_node("../TileMap");
-onready var tiles = get_node("../TileMap").get_used_cells();
+onready var tileMap = get_node("../TileMap3");
+onready var tiles = get_node("../TileMap3").get_used_cells();
 
 #Player position and move positions
 var playerPosition;
@@ -66,23 +66,6 @@ func showPlayerMovementRange():
 			for position in allMoves:
 				if position == currentTile:
 					item.set_visible(true);
-#			if right1 == currentTile:
-#				item.set_visible(true)
-#			if right2 == currentTile:
-#				item.set_visible(true)
-#			if left1 == currentTile:
-#				item.set_visible(true)
-#			if left2 == currentTile:
-#				item.set_visible(true)
-#			if up1 == currentTile:
-#				item.set_visible(true)
-#			if up2 == currentTile:
-#				item.set_visible(true)
-#			if down1 == currentTile:
-#				item.set_visible(true)
-#			if down2 == currentTile:
-#				item.set_visible(true)
-
 	
 func aggregateViablePlayerMoves(characterClass):
 	var right1;

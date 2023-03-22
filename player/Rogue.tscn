@@ -54,6 +54,16 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
+[node name="RogueTimer4" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
 [connection signal="timeout" from="RogueTimer1" to="." method="_on_RogueTimer1_timeout"]
 [connection signal="timeout" from="RogueTimer2" to="." method="_on_RogueTimer2_timeout"]
 [connection signal="timeout" from="RogueTimer3" to="." method="_on_RogueTimer3_timeout"]
+[connection signal="timeout" from="RogueTimer4" to="." method="_on_RogueTimer4_timeout"]

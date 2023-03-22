@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/sprites/tile_0084.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player.gd" type="Script" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://assets/effects/progressBarFiller.png" type="Texture" id=4]
 [ext_resource path="res://assets/effects/characterSelction.png" type="Texture" id=5]
 [ext_resource path="res://player/wizard.gd" type="Script" id=6]
+[ext_resource path="res://assets/ui/slime_portrait.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/fire portrait.png" type="Texture" id=8]
+[ext_resource path="res://assets/ui/magic_arrow_portrait.png" type="Texture" id=9]
+[ext_resource path="res://assets/ui/hand.png" type="Texture" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.0
@@ -37,8 +41,62 @@ margin_bottom = 26.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 4 )
 
-[node name="class" type="Node" parent="."]
+[node name="WizardTimer6" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+autostart = true
+
+[node name="class" type="Node2D" parent="."]
 script = ExtResource( 6 )
+
+[node name="CharacterActionsMenu" type="Node2D" parent="class"]
+
+[node name="FireSpell" type="TextureRect" parent="class/CharacterActionsMenu"]
+margin_left = 22.0
+margin_top = -33.0
+margin_right = 33.0
+margin_bottom = -22.0
+texture = ExtResource( 8 )
+
+[node name="SlimeSpell" type="TextureRect" parent="class/CharacterActionsMenu"]
+margin_left = 22.0
+margin_top = -19.0
+margin_right = 33.0
+margin_bottom = -8.0
+texture = ExtResource( 7 )
+
+[node name="MagicArrowSpell" type="TextureRect" parent="class/CharacterActionsMenu"]
+margin_left = 22.0
+margin_top = -5.0
+margin_right = 33.0
+margin_bottom = 6.0
+texture = ExtResource( 9 )
+
+[node name="choosersGroup" type="Node2D" parent="class"]
+
+[node name="HandChooser1" type="TextureRect" parent="class/choosersGroup"]
+visible = false
+margin_left = 10.0
+margin_top = -33.0
+margin_right = 21.0
+margin_bottom = -22.0
+texture = ExtResource( 10 )
+
+[node name="HandChooser2" type="TextureRect" parent="class/choosersGroup"]
+visible = false
+margin_left = 10.0
+margin_top = -19.0
+margin_right = 21.0
+margin_bottom = -8.0
+texture = ExtResource( 10 )
+
+[node name="HandChooser3" type="TextureRect" parent="class/choosersGroup"]
+visible = false
+margin_left = 10.0
+margin_top = -4.0
+margin_right = 21.0
+margin_bottom = 7.0
+texture = ExtResource( 10 )
 
 [node name="WizardTimer1" type="Timer" parent="."]
 one_shot = true
@@ -64,11 +122,6 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="WizardTimer6" type="Timer" parent="."]
-wait_time = 6.0
-one_shot = true
-autostart = true
-
 [node name="WizardTimer7" type="Timer" parent="."]
 wait_time = 7.0
 one_shot = true
@@ -89,12 +142,12 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
+[connection signal="timeout" from="WizardTimer6" to="." method="_on_WizardTimer6_timeout"]
 [connection signal="timeout" from="WizardTimer1" to="." method="_on_WizardTimer1_timeout"]
 [connection signal="timeout" from="WizardTimer2" to="." method="_on_WizardTimer2_timeout"]
 [connection signal="timeout" from="WizardTimer3" to="." method="_on_WizardTimer3_timeout"]
 [connection signal="timeout" from="WizardTimer4" to="." method="_on_WizardTimer4_timeout"]
 [connection signal="timeout" from="WizardTimer5" to="." method="_on_WizardTimer5_timeout"]
-[connection signal="timeout" from="WizardTimer6" to="." method="_on_WizardTimer6_timeout"]
 [connection signal="timeout" from="WizardTimer7" to="." method="_on_WizardTimer7_timeout"]
 [connection signal="timeout" from="WizardTimer8" to="." method="_on_WizardTimer8_timeout"]
 [connection signal="timeout" from="WizardTimer9" to="." method="_on_WizardTimer9_timeout"]

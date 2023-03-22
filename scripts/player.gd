@@ -16,15 +16,13 @@ var canMove = false;
 #Movement Variables
 var playerPosition;
 var mousePosition;
-onready var tileMap = get_node("../../TileMap")
+onready var tileMap = get_node("../../TileMap3")
 onready var movementTilesNode = get_node("../../movementTiles");
 var viablePositions = [];
 
 ### Lifecycle Functions
 func _ready():
 	checkIfCurrent();
-	print("test");
-		
 	playerPosition = tileMap.world_to_map(self.global_position);
 	for item in movementTilesNode.get_children():
 		viablePositions.append(tileMap.world_to_map(item.global_position));
@@ -72,6 +70,9 @@ func checkIfCurrent():
 	else: 
 		currentCharacter = false;
 		
+func exportCurrentState():
+	return currentCharacter;
+		
 func setBackground():
 	if currentCharacter:
 		$SelectedBackground.set_visible(true);
@@ -80,6 +81,7 @@ func setBackground():
 
 func exportCanMove():
 	return canMove;
+
 
 ### Signals
 
@@ -109,14 +111,18 @@ func _on_KnightTime6_timeout():
 
 ##Rogue Timers
 func _on_RogueTimer1_timeout():
-	turnProgressBar.value = 33
+	turnProgressBar.value = 25
 	
 func _on_RogueTimer2_timeout():
-	turnProgressBar.value = 66
+	turnProgressBar.value = 50
 
 func _on_RogueTimer3_timeout():
+	turnProgressBar.value = 75
+
+func _on_RogueTimer4_timeout():
 	turnProgressBar.value = 100
 	canMove = true;
+
 
 ##Wizard Timers
 
