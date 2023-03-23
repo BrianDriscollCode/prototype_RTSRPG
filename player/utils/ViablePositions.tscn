@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/effects/green2.png" type="Texture" id=1]
 [ext_resource path="res://tilemaps/GreenTile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scripts/highlights.gd" type="Script" id=3]
+[ext_resource path="res://scripts/movementTiles.gd" type="Script" id=3]
 
 [node name="ViablePositions" type="Node2D"]
 script = ExtResource( 3 )

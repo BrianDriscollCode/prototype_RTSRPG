@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+#SourceOfTruth
+onready var SOURCE_OF_TRUTH = get_node("../../SOURCE_OF_TRUTH");
 
 #LevelState
 export var currentCharacter = false;
@@ -7,17 +9,15 @@ var currentCharacterClass;
 onready var levelState = get_node("../../LevelState");
 
 #Turn-based Variables
-onready var step1Timer = get_node("RogueTimer1");
-onready var step2Timer = get_node("RogueTimer2");
-onready var step3Timer = get_node("RogueTimer3");
 onready var turnProgressBar = get_node("TurnProgressBar");
 var canMove = false;
 
 #Movement Variables
 var playerPosition;
 var mousePosition;
-onready var tileMap = get_node("../../TileMap3")
-onready var movementTilesNode = get_node("../../movementTiles");
+var convertedMousePosition;
+onready var tileMap = get_node("../../TileMap")
+onready var movementTilesNode = get_node("../../MovementTiles");
 var viablePositions = [];
 
 ### Lifecycle Functions
@@ -29,7 +29,7 @@ func _ready():
 		
 		
 	
-func _process(delta):
+func _process(_delta):
 	checkIfCurrent();
 	if canMove:
 		getMousePosition();
@@ -39,12 +39,12 @@ func _process(delta):
 		
 ### Logic Functions
 func getMousePosition():
-	mousePosition = get_viewport().get_mouse_position();
-	mousePosition = tileMap.world_to_map(mousePosition);
+	mousePosition = SOURCE_OF_TRUTH.getMousePosition();
+	convertedMousePosition = tileMap.world_to_map(mousePosition);
 	
 func moveCharacter():
-	var globalMousePosition = tileMap.map_to_world(mousePosition) - Vector2(-8, -10);
-	var isViablePosition  = checkPositionViable(mousePosition);
+	var globalMousePosition = tileMap.map_to_world(convertedMousePosition) - Vector2(-8, -10);
+	var isViablePosition  = checkPositionViable(convertedMousePosition);
 	
 	if Input.is_action_just_pressed("left_click") && isViablePosition && currentCharacter:
 		self.global_position = globalMousePosition;
@@ -89,14 +89,11 @@ func exportCanMove():
 func _on_KnightTime1_timeout():
 	turnProgressBar.value = 16
 
-
 func _on_KnightTime2_timeout():
 	turnProgressBar.value = 33
 
-
 func _on_KnightTime3_timeout():
 	turnProgressBar.value = 49
-
 
 func _on_KnightTime4_timeout():
 	turnProgressBar.value = 65

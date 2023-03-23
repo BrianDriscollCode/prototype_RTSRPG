@@ -1,16 +1,17 @@
 extends Node2D
 
+onready var SOURCE_OF_TRUTH = get_node("../SOURCE_OF_TRUTH"); 
+
 var currentCharacter;
 var currentCharacterClass;
 onready var levelState = get_node("../LevelState");
-
 
 #Tiles and Mouse Position
 var mousePosition;
 var convertedMousePosition;
 var highlightTiles = [];
-onready var tileMap = get_node("../TileMap3");
-onready var tiles = get_node("../TileMap3").get_used_cells();
+onready var tileMap = get_node("../TileMap");
+onready var tiles = get_node("../TileMap").get_used_cells();
 
 #Player position and move positions
 var playerPosition;
@@ -24,7 +25,7 @@ func _ready():
 	getCurrentPlayer();
 
 
-func _process(delta):
+func _process(_delta):
 	matchToTile();
 	getCurrentPlayer();
 	showPlayerMovementRange();
@@ -32,7 +33,7 @@ func _process(delta):
 	
 
 func matchToTile():
-	mousePosition = get_viewport().get_mouse_position()
+	mousePosition = SOURCE_OF_TRUTH.getMousePosition();
 	convertedMousePosition = tileMap.world_to_map(mousePosition)
 	# Loop through tiles to see which matches mouse position, thne make visible
 	for item in highlightTiles:

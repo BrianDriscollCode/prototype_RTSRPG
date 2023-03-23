@@ -1,49 +1,58 @@
 extends Node2D
 
-onready var party = get_node("../Party");
+onready var SOURCE_OF_TRUTH = get_node("../SOURCE_OF_TRUTH");
+
+#Source of Truth Variables
+var party;
+var partyMembers;
+
+#Level State Variables
 var currentCharacter;
 var currentCharacterClass;
 var characterNumber = 0;
-var allCharacters = [];
 
 ### Lifecycle
 func _ready():
-	loadCharactersIntoArray();
+	establishParty();
+	initialSetCurrentCharacter();
 	
 		
-func _process(delta):
+func _process(_delta):
 	chooseCharacter();
 	
 ### Logic
-func loadCharactersIntoArray():
-	for item in party.get_children():
-		allCharacters.append(item);
-	currentCharacter = allCharacters[0];
+func establishParty():
+	party = SOURCE_OF_TRUTH.getParty();
+	partyMembers = SOURCE_OF_TRUTH.getPartyMembers();
+
+func initialSetCurrentCharacter():
+	currentCharacter = partyMembers[0];
 	currentCharacterClass = currentCharacter.get_node("class").returnCharacterClass();
 	
 
 func chooseCharacter():
 	if Input.is_action_just_pressed("character_1"):
-		currentCharacter = allCharacters[0];
+		currentCharacter = partyMembers[0];
 		characterNumber = 0;
 		currentCharacterClass = currentCharacter.get_node("class").returnCharacterClass();
+		print(SOURCE_OF_TRUTH.getPartyMembers());
 	if Input.is_action_just_pressed("character_2"):
-		currentCharacter = allCharacters[1];
+		currentCharacter = partyMembers[1];
 		characterNumber = 1;
 		currentCharacterClass = currentCharacter.get_node("class").returnCharacterClass();
 	if Input.is_action_just_pressed("character_3"):
-		currentCharacter = allCharacters[2];
+		currentCharacter = partyMembers[2];
 		characterNumber = 2;
 		currentCharacterClass = currentCharacter.get_node("class").returnCharacterClass();
 	
 	if Input.is_action_just_pressed("cycle_characters"):
 		if characterNumber < 2:
 			characterNumber += 1;
-			currentCharacter = allCharacters[characterNumber];
+			currentCharacter = partyMembers[characterNumber];
 			currentCharacterClass = currentCharacter.get_node("class").returnCharacterClass();
 		else:
 			characterNumber = 0;
-			currentCharacter = allCharacters[characterNumber];
+			currentCharacter = partyMembers[characterNumber];
 			currentCharacterClass = currentCharacter.get_node("class").returnCharacterClass();
 
 func returnCurrentCharacter():

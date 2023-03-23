@@ -5,6 +5,7 @@ var characterClass = "Wizard";
 onready var parent = get_node("../../Wizard");
 var currentCharacter;
 
+
 #Character Actions
 onready var characterActionsMenu = get_node("CharacterActionsMenu");
 var characterActions = [];
@@ -33,13 +34,12 @@ func _ready():
 	aggregateChoosers();
 	
 	
-func _process(delta):
+func _process(_delta):
 	checkIfCurrent();
 	showCharacterActionsMenu();
 	showSpecificHandChooser();
 	toggleChooser();
-	
-
+		
 func aggregateCharacterActions():
 	for item in characterActionsMenu.get_children():
 		characterActions.append(item);
