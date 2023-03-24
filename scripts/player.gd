@@ -12,6 +12,9 @@ onready var levelState = get_node("../../LevelState");
 onready var turnProgressBar = get_node("TurnProgressBar");
 var canMove = false;
 
+#Skills
+onready var actionProgressBar = get_node("ActionProgressBar");
+
 #Movement Variables
 var playerPosition;
 var mousePosition;
@@ -81,6 +84,9 @@ func setBackground():
 
 func exportCanMove():
 	return canMove;
+
+func startAction():
+	actionProgressBar.tweenActionProgress();
 
 
 ### Signals

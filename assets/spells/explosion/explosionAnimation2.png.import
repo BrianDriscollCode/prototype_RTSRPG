@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/progressBar.png-e2c9ccbff7f8b6a6c91d46db2fee7b06.stex"
+path="res://.import/explosionAnimation2.png-f4c251f103af5304d9d7dfa64af6a249.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/effects/progressBar.png"
-dest_files=[ "res://.import/progressBar.png-e2c9ccbff7f8b6a6c91d46db2fee7b06.stex" ]
+source_file="res://assets/spells/explosion/explosionAnimation2.png"
+dest_files=[ "res://.import/explosionAnimation2.png-f4c251f103af5304d9d7dfa64af6a249.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

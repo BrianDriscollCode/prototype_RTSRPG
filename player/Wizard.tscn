@@ -1,15 +1,18 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/sprites/tile_0084.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player.gd" type="Script" id=2]
-[ext_resource path="res://assets/effects/progressBar.png" type="Texture" id=3]
-[ext_resource path="res://assets/effects/progressBarFiller.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/progressBar.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/progressBarFiller.png" type="Texture" id=4]
 [ext_resource path="res://assets/effects/characterSelction.png" type="Texture" id=5]
 [ext_resource path="res://player/wizard.gd" type="Script" id=6]
 [ext_resource path="res://assets/ui/slime_portrait.png" type="Texture" id=7]
 [ext_resource path="res://assets/ui/fire portrait.png" type="Texture" id=8]
 [ext_resource path="res://assets/ui/magic_arrow_portrait.png" type="Texture" id=9]
 [ext_resource path="res://assets/ui/hand.png" type="Texture" id=10]
+[ext_resource path="res://assets/ui/spell_bar_empty.png" type="Texture" id=11]
+[ext_resource path="res://assets/ui/spell_bar_full.png" type="Texture" id=12]
+[ext_resource path="res://player/SpellProgressBar.gd" type="Script" id=13]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.0
@@ -40,6 +43,15 @@ margin_right = 32.0
 margin_bottom = 26.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 4 )
+
+[node name="ActionProgressBar" type="TextureProgress" parent="."]
+margin_left = -8.0
+margin_top = -16.0
+margin_right = 32.0
+margin_bottom = 24.0
+texture_under = ExtResource( 11 )
+texture_progress = ExtResource( 12 )
+script = ExtResource( 13 )
 
 [node name="WizardTimer6" type="Timer" parent="."]
 wait_time = 6.0

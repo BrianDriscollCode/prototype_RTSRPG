@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/progressBarFiller.png-55d19d917eeb659e8310e3134cea265b.stex"
+path="res://.import/spell_bar_empty.png-f01809f8318e6c203c429b8a7f9165a2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/effects/progressBarFiller.png"
-dest_files=[ "res://.import/progressBarFiller.png-55d19d917eeb659e8310e3134cea265b.stex" ]
+source_file="res://assets/ui/spell_bar_empty.png"
+dest_files=[ "res://.import/spell_bar_empty.png-f01809f8318e6c203c429b8a7f9165a2.stex" ]
 
 [params]
 
