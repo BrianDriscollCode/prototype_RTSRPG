@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/spells/fire/Sprite-0003.png" type="Texture" id=5]
 [ext_resource path="res://assets/spells/fire/Sprite-0004.png" type="Texture" id=6]
 [ext_resource path="res://assets/spells/fire/Sprite-0002.png" type="Texture" id=7]
-[ext_resource path="res://player/skills/mage/BurnFire.gd" type="Script" id=8]
+[ext_resource path="res://scripts/skills/spells/BurnFire.gd" type="Script" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

@@ -9,6 +9,7 @@ var currentCharacter;
 #Character Actions
 onready var characterActionsMenu = get_node("CharacterActionsMenu");
 var characterActions = [];
+var currentSelectedAction;
 
 #Choosers
 onready var choosersGroup = get_node("choosersGroup");
@@ -43,6 +44,7 @@ func _process(_delta):
 func aggregateCharacterActions():
 	for item in characterActionsMenu.get_children():
 		characterActions.append(item);
+	currentSelectedAction = characterActions[0];
 		
 func showCharacterActionsMenu():
 	if currentCharacter:
@@ -71,10 +73,14 @@ func toggleChooser():
 			handChoosers[chooserPosition].set_visible(false);
 			chooserPosition += 1;
 			handChoosers[chooserPosition].set_visible(true);
+			currentSelectedAction = characterActions[chooserPosition]; 
+			print(currentSelectedAction)
 		else:
 			handChoosers[chooserPosition].set_visible(false);
 			chooserPosition = 0;
 			handChoosers[chooserPosition].set_visible(true);
+			currentSelectedAction = characterActions[chooserPosition]; 
+			print(currentSelectedAction)
 	elif Input.is_action_just_pressed("skill_toggle") && !currentCharacter:
 		handChoosers[chooserPosition].set_visible(false);
 

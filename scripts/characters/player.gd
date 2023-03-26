@@ -30,15 +30,12 @@ func _ready():
 	for item in movementTilesNode.get_children():
 		viablePositions.append(tileMap.world_to_map(item.global_position));
 		
-		
-	
 func _process(_delta):
 	checkIfCurrent();
 	if canMove:
 		getMousePosition();
 		moveCharacter();
 	setBackground();
-		
 		
 ### Logic Functions
 func getMousePosition():

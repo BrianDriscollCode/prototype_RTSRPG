@@ -4,8 +4,8 @@
 [ext_resource path="res://assets/ui/progressBarFiller.png" type="Texture" id=2]
 [ext_resource path="res://assets/effects/characterSelctionKnight.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/tile_0096.png" type="Texture" id=4]
-[ext_resource path="res://scripts/player.gd" type="Script" id=5]
-[ext_resource path="res://player/knight.gd" type="Script" id=6]
+[ext_resource path="res://scripts/characters/player.gd" type="Script" id=5]
+[ext_resource path="res://scripts/characters/class/knight.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.0
