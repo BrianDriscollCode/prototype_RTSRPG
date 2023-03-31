@@ -6,6 +6,8 @@ var currentCharacter;
 var currentCharacterClass;
 onready var levelState = get_node("../LevelState");
 
+var arrowIndicators = preload("res://ui/ArrowIndicator.tscn");
+
 #Tiles and Mouse Position
 var mousePosition;
 var convertedMousePosition;
@@ -30,6 +32,11 @@ func _process(_delta):
 	getCurrentPlayer();
 	showPlayerMovementRange();
 	checkIfMoveViable();
+	showArrows()
+	
+func showArrows():
+	var arrows = arrowIndicators.instance();
+#	tileMap.add_child(arrowIndicators);
 	
 
 func matchToTile():
@@ -126,4 +133,7 @@ func exportViableMove():
 	
 func getCanCharacterMove():
 	return currentCharacter.exportCanMove();
+	
+func exportConvertedPlayerPosition():
+	return convertedPlayerPosition;
 		

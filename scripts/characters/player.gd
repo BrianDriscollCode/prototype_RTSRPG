@@ -3,6 +3,22 @@ extends KinematicBody2D
 #SourceOfTruth
 onready var SOURCE_OF_TRUTH = get_node("../../SOURCE_OF_TRUTH");
 
+#CharacterState
+var characterState = {
+	"isSelected": false,
+	"currentSkill": "",
+	"currentCharacterClass": "",
+	"canMove": "",
+	"position": Vector2(0,0),
+}
+
+#Skills
+onready var skillFactory = get_node("skillFactory");
+onready var actionProgressBar = get_node("ActionProgressBar");
+
+
+onready var classObject = get_node("Class");
+
 #LevelState
 export var currentCharacter = false;
 var currentCharacterClass;
@@ -12,9 +28,6 @@ onready var levelState = get_node("../../LevelState");
 onready var turnProgressBar = get_node("TurnProgressBar");
 var canMove = false;
 
-#Skills
-onready var actionProgressBar = get_node("ActionProgressBar");
-
 #Movement Variables
 var playerPosition;
 var mousePosition;
@@ -23,12 +36,15 @@ onready var tileMap = get_node("../../TileMap")
 onready var movementTilesNode = get_node("../../MovementTiles");
 var viablePositions = [];
 
+
 ### Lifecycle Functions
 func _ready():
 	checkIfCurrent();
 	playerPosition = tileMap.world_to_map(self.global_position);
 	for item in movementTilesNode.get_children():
 		viablePositions.append(tileMap.world_to_map(item.global_position));
+	print(characterState);
+	
 		
 func _process(_delta):
 	checkIfCurrent();
@@ -36,6 +52,22 @@ func _process(_delta):
 		getMousePosition();
 		moveCharacter();
 	setBackground();
+	updateCharacterState();
+	exportCharacterState();
+	print(characterState.currentSkill)
+	
+func updateCharacterState():
+	characterState.isSelected = currentCharacter;
+	characterState.currentSkill = classObject.returnCurrentSelectedAction();
+	characterState.currentCharacterClass = classObject.returnCharacterClass();
+	characterState.canMove = canMove;
+	characterState.position = tileMap.world_to_map(self.global_position);
+	
+func exportCharacterState():
+	return characterState;
+	
+func exportCurrentSkill():
+	return characterState.currentSkill;
 		
 ### Logic Functions
 func getMousePosition():
@@ -62,7 +94,7 @@ func checkPositionViable(position):
 func resetTurnProgress():
 	turnProgressBar.value = 0;
 	canMove = false;
-	get_node("class").restartTimers();
+	get_node("Class").restartTimers();
 	
 func checkIfCurrent(): 
 	if (levelState.returnCurrentCharacter() == self):
@@ -81,9 +113,8 @@ func setBackground():
 
 func exportCanMove():
 	return canMove;
-
-func startAction():
-	actionProgressBar.tweenActionProgress();
+	
+	
 
 
 ### Signals

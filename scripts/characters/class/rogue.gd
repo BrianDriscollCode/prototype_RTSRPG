@@ -10,6 +10,9 @@ onready var timer4 = get_node("../RogueTimer4");
 func returnCharacterClass():
 	return characterClass;
 	
+func returnCurrentSelectedAction():
+	return "none";
+	
 func restartTimers():
 	timer1.start();
 	timer2.start();

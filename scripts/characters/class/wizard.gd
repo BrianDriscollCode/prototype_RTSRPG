@@ -1,20 +1,31 @@
 extends Node
 
+onready var SOURCE_OF_TRUTH = get_node("../../../SOURCE_OF_TRUTH");
+onready var level = get_node("../../../../Level");
 
 var characterClass = "Wizard";
 onready var parent = get_node("../../Wizard");
 var currentCharacter;
+onready var animatedSprite = get_node("../AnimatedSprite");
 
 
 #Character Actions
+var actionProgressBar = preload("res://ui/ActionProgressBar.tscn");
 onready var characterActionsMenu = get_node("CharacterActionsMenu");
 var characterActions = [];
 var currentSelectedAction;
+var actionInProgress = false;
+var selectedPosition;
 
 #Choosers
 onready var choosersGroup = get_node("choosersGroup");
 var handChoosers = [];
 var chooserPosition = 0;
+var currentSkill;
+
+#spells
+var burnFire = preload("res://player/skills/mage/BurnFire.tscn")
+var explosion = preload("res://player/skills/mage/explosion.tscn")
 
 
 #Timers
@@ -33,6 +44,7 @@ func _ready():
 	checkIfCurrent();
 	aggregateCharacterActions();
 	aggregateChoosers();
+	currentSkill = parent.exportCurrentSkill();
 	
 	
 func _process(_delta):
@@ -40,11 +52,46 @@ func _process(_delta):
 	showCharacterActionsMenu();
 	showSpecificHandChooser();
 	toggleChooser();
+	startAction();
+	currentSkill = parent.exportCurrentSkill();
+	print(currentSelectedAction)
+	
+func startAction():
+	if currentCharacter && Input.is_action_just_pressed("test_skill") && !actionInProgress && currentSkill == "BurnFire":
+		print(currentSkill);
+		actionInProgress = true
+		animatedSprite.play("cast")
+		selectedPosition = SOURCE_OF_TRUTH.getConvertedMousePosition();
+		var progressBarInstance = actionProgressBar.instance();
+		progressBarInstance.set_position(Vector2(-8,-16));
+		parent.add_child(progressBarInstance);
+		progressBarInstance.set_visible(true);
+		var tween = get_tree().create_tween();
+		tween.tween_property(progressBarInstance, "value", 100, 3).set_trans(Tween.TRANS_LINEAR);
+		yield(tween, "finished");
+		progressBarInstance.queue_free();
+		animatedSprite.play("finish_cast");
+		animatedSprite.connect("animation_finished", self, "playDefault");
+		actionInProgress = false;
+
+func playDefault():
+	burnFire();
+	animatedSprite.play("default");
+	animatedSprite.disconnect("animation_finished", self, "playDefault")
+	
+func burnFire():
+	var spellInstance = burnFire.instance();
+	spellInstance.set_position(selectedPosition - Vector2(-8, -7));
+	level.add_child(spellInstance);
+
+func printWords():
+	print("test")
+	actionProgressBar.queue_free();
 		
 func aggregateCharacterActions():
 	for item in characterActionsMenu.get_children():
 		characterActions.append(item);
-	currentSelectedAction = characterActions[0];
+	currentSelectedAction = characterActions[0].exportName(); 
 		
 func showCharacterActionsMenu():
 	if currentCharacter:
@@ -73,16 +120,19 @@ func toggleChooser():
 			handChoosers[chooserPosition].set_visible(false);
 			chooserPosition += 1;
 			handChoosers[chooserPosition].set_visible(true);
-			currentSelectedAction = characterActions[chooserPosition]; 
+			currentSelectedAction = characterActions[chooserPosition].exportName(); 
 			print(currentSelectedAction)
 		else:
 			handChoosers[chooserPosition].set_visible(false);
 			chooserPosition = 0;
 			handChoosers[chooserPosition].set_visible(true);
-			currentSelectedAction = characterActions[chooserPosition]; 
+			currentSelectedAction = characterActions[chooserPosition].exportName(); 
 			print(currentSelectedAction)
 	elif Input.is_action_just_pressed("skill_toggle") && !currentCharacter:
 		handChoosers[chooserPosition].set_visible(false);
+		
+func returnCurrentSelectedAction():
+	return currentSelectedAction;
 
 func returnCharacterClass():
 	return characterClass;

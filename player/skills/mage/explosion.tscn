@@ -1,20 +1,20 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://assets/spells/explosion/explosionAnimation6.png" type="Texture" id=1]
-[ext_resource path="res://assets/spells/explosion/explosionAnimation9.png" type="Texture" id=2]
-[ext_resource path="res://assets/spells/explosion/explosionAnimation10.png" type="Texture" id=3]
+[ext_resource path="res://assets/spells/explosion/explosionAnimation7.png" type="Texture" id=1]
+[ext_resource path="res://assets/spells/explosion/explosionAnimation8.png" type="Texture" id=2]
+[ext_resource path="res://assets/spells/explosion/explosionAnimation5.png" type="Texture" id=3]
 [ext_resource path="res://assets/spells/explosion/explosionAnimation4.png" type="Texture" id=4]
-[ext_resource path="res://assets/spells/explosion/explosionAnimation7.png" type="Texture" id=5]
-[ext_resource path="res://assets/spells/explosion/explosionAnimation8.png" type="Texture" id=6]
-[ext_resource path="res://assets/spells/explosion/explosionAnimation5.png" type="Texture" id=7]
-[ext_resource path="res://scripts/skills/spells/Explosion.gd" type="Script" id=8]
-[ext_resource path="res://assets/spells/explosion/explosionAnimation1.png" type="Texture" id=9]
-[ext_resource path="res://assets/spells/explosion/explosionAnimation2.png" type="Texture" id=10]
-[ext_resource path="res://assets/spells/explosion/explosionAnimation3.png" type="Texture" id=11]
+[ext_resource path="res://assets/spells/explosion/explosionAnimation6.png" type="Texture" id=5]
+[ext_resource path="res://assets/spells/explosion/explosionAnimation10.png" type="Texture" id=6]
+[ext_resource path="res://assets/spells/explosion/explosionAnimation9.png" type="Texture" id=7]
+[ext_resource path="res://assets/spells/explosion/explosionAnimation3.png" type="Texture" id=8]
+[ext_resource path="res://assets/spells/explosion/explosionAnimation2.png" type="Texture" id=9]
+[ext_resource path="res://assets/spells/explosion/explosionAnimation1.png" type="Texture" id=10]
+[ext_resource path="res://scripts/skills/spells/Explosion.gd" type="Script" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 6 ) ],
 "loop": false,
 "name": "default",
 "speed": 12.0
@@ -24,7 +24,7 @@ animations = [ {
 extents = Vector2( 12, 12 )
 
 [node name="explosion" type="Area2D"]
-script = ExtResource( 8 )
+script = ExtResource( 11 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )

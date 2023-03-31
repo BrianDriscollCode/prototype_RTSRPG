@@ -27,33 +27,32 @@ func establishParty():
 
 func initialSetCurrentCharacter():
 	currentCharacter = partyMembers[0];
-	currentCharacterClass = currentCharacter.get_node("class").returnCharacterClass();
+	currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass();
 	
 
 func chooseCharacter():
 	if Input.is_action_just_pressed("character_1"):
 		currentCharacter = partyMembers[0];
 		characterNumber = 0;
-		currentCharacterClass = currentCharacter.get_node("class").returnCharacterClass();
-		print(SOURCE_OF_TRUTH.getPartyMembers());
+		currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass();
 	if Input.is_action_just_pressed("character_2"):
 		currentCharacter = partyMembers[1];
 		characterNumber = 1;
-		currentCharacterClass = currentCharacter.get_node("class").returnCharacterClass();
+		currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass();
 	if Input.is_action_just_pressed("character_3"):
 		currentCharacter = partyMembers[2];
 		characterNumber = 2;
-		currentCharacterClass = currentCharacter.get_node("class").returnCharacterClass();
+		currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass();
 	
 	if Input.is_action_just_pressed("cycle_characters"):
 		if characterNumber < 2:
 			characterNumber += 1;
 			currentCharacter = partyMembers[characterNumber];
-			currentCharacterClass = currentCharacter.get_node("class").returnCharacterClass();
+			currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass();
 		else:
 			characterNumber = 0;
 			currentCharacter = partyMembers[characterNumber];
-			currentCharacterClass = currentCharacter.get_node("class").returnCharacterClass();
+			currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass();
 
 func returnCurrentCharacter():
 	return currentCharacter;
