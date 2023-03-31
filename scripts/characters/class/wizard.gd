@@ -54,11 +54,9 @@ func _process(_delta):
 	toggleChooser();
 	startAction();
 	currentSkill = parent.exportCurrentSkill();
-	print(currentSelectedAction)
 	
 func startAction():
 	if currentCharacter && Input.is_action_just_pressed("test_skill") && !actionInProgress && currentSkill == "BurnFire":
-		print(currentSkill);
 		actionInProgress = true
 		animatedSprite.play("cast")
 		selectedPosition = SOURCE_OF_TRUTH.getConvertedMousePosition();
@@ -85,7 +83,6 @@ func burnFire():
 	level.add_child(spellInstance);
 
 func printWords():
-	print("test")
 	actionProgressBar.queue_free();
 		
 func aggregateCharacterActions():
@@ -121,13 +118,11 @@ func toggleChooser():
 			chooserPosition += 1;
 			handChoosers[chooserPosition].set_visible(true);
 			currentSelectedAction = characterActions[chooserPosition].exportName(); 
-			print(currentSelectedAction)
 		else:
 			handChoosers[chooserPosition].set_visible(false);
 			chooserPosition = 0;
 			handChoosers[chooserPosition].set_visible(true);
 			currentSelectedAction = characterActions[chooserPosition].exportName(); 
-			print(currentSelectedAction)
 	elif Input.is_action_just_pressed("skill_toggle") && !currentCharacter:
 		handChoosers[chooserPosition].set_visible(false);
 		

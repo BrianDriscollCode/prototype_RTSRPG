@@ -43,7 +43,6 @@ func _ready():
 	playerPosition = tileMap.world_to_map(self.global_position);
 	for item in movementTilesNode.get_children():
 		viablePositions.append(tileMap.world_to_map(item.global_position));
-	print(characterState);
 	
 		
 func _process(_delta):
@@ -54,7 +53,10 @@ func _process(_delta):
 	setBackground();
 	updateCharacterState();
 	exportCharacterState();
-	print(characterState.currentSkill)
+	if currentCharacter: 
+		self.set_z_index(5)
+	else:
+		self.set_z_index(0)
 	
 func updateCharacterState():
 	characterState.isSelected = currentCharacter;
@@ -114,9 +116,6 @@ func setBackground():
 func exportCanMove():
 	return canMove;
 	
-	
-
-
 ### Signals
 
 ##Knight Timers
