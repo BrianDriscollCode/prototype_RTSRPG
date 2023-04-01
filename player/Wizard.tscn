@@ -63,7 +63,7 @@ texture = ExtResource( 5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -2 )
 frames = SubResource( 2 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="wizard" type="Sprite" parent="."]

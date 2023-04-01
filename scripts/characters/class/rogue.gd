@@ -1,6 +1,6 @@
 extends Node
 
-
+var canAttack = false;
 var characterClass = "Rogue";
 onready var timer1 = get_node("../RogueTimer1");
 onready var timer2 = get_node("../RogueTimer2");
@@ -12,6 +12,9 @@ func returnCharacterClass():
 	
 func returnCurrentSelectedAction():
 	return "none";
+	
+func toggleAttackStatus():
+	canAttack = !canAttack;
 	
 func restartTimers():
 	timer1.start();

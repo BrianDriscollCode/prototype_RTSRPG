@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/ui/progressBar.png" type="Texture" id=1]
 [ext_resource path="res://assets/ui/progressBarFiller.png" type="Texture" id=2]
@@ -12,15 +12,55 @@
 [ext_resource path="res://assets/ui/shiled_portrait.png" type="Texture" id=10]
 [ext_resource path="res://assets/ui/hand.png" type="Texture" id=11]
 [ext_resource path="res://assets/ui/sword_portrait.png" type="Texture" id=12]
+[ext_resource path="res://assets/spells/stab/newStabEffect7.png" type="Texture" id=13]
+[ext_resource path="res://assets/spells/stab/newStabEffect4.png" type="Texture" id=14]
+[ext_resource path="res://assets/spells/stab/newStabEffect8.png" type="Texture" id=15]
+[ext_resource path="res://assets/spells/stab/newStabEffect3.png" type="Texture" id=16]
+[ext_resource path="res://assets/spells/stab/newStabEffect5.png" type="Texture" id=17]
+[ext_resource path="res://assets/spells/stab/newStabEffect2.png" type="Texture" id=18]
+[ext_resource path="res://assets/spells/stab/newStabEffect6.png" type="Texture" id=19]
+[ext_resource path="res://assets/spells/stab/newStabEffect1.png" type="Texture" id=20]
+[ext_resource path="res://assets/sprites/animations/knight/knight_idle2.png" type="Texture" id=21]
+[ext_resource path="res://assets/sprites/animations/knight/knight_idle3.png" type="Texture" id=22]
+[ext_resource path="res://assets/sprites/animations/knight/knight_idle1.png" type="Texture" id=23]
+[ext_resource path="res://assets/sprites/animations/knight/knight_idle4.png" type="Texture" id=24]
+[ext_resource path="res://assets/sprites/animations/knight/knight_idle5.png" type="Texture" id=25]
+[ext_resource path="res://assets/sprites/animations/knight/knight_stab1.png" type="Texture" id=26]
+[ext_resource path="res://assets/sprites/animations/knight/knight_stab6.png" type="Texture" id=27]
+[ext_resource path="res://assets/sprites/animations/knight/knight_stab4.png" type="Texture" id=28]
+[ext_resource path="res://assets/sprites/animations/knight/knight_stab3.png" type="Texture" id=29]
+[ext_resource path="res://assets/sprites/animations/knight/knight_stab2.png" type="Texture" id=30]
+[ext_resource path="res://assets/sprites/animations/knight/knight_stab5.png" type="Texture" id=31]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 31 ), ExtResource( 27 ) ],
+"loop": false,
+"name": "stab",
+"speed": 8.0
+} ]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.0
 height = 0.0
 
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 20 ), ExtResource( 18 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 13 ), ExtResource( 15 ) ],
+"loop": false,
+"name": "default",
+"speed": 15.0
+} ]
+
 [sub_resource type="Animation" id=2]
 resource_name = "Sword"
 length = 0.4
-step = 0.4
+step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 2
@@ -28,10 +68,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0250112, 0.272189, 0.332662 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( -0.01 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 18.2, 90.0, 90.0, 18.2 ]
+"values": [ 18.2 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:position")
@@ -40,23 +80,72 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.0250112, 0.272189, 0.332662 ),
+"times": PoolRealArray( -0.0199999 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 9, -5 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "stab"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 9, -5 ), Vector2( 12, 0 ), Vector2( 5, 0 ), Vector2( 5, 0 ), Vector2( 10, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 9, -5 ), Vector2( 15, 2 ), Vector2( 15, 2 ), Vector2( 9, -5 ) ]
+"values": [ 18.2, 90.0, 90.0, 90.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 32.25, 10 )
 
 [node name="Knight" type="KinematicBody2D"]
 script = ExtResource( 5 )
 
 [node name="SelectedBackground" type="TextureRect" parent="."]
+visible = false
 margin_left = -12.0
-margin_top = -12.0
-margin_right = 28.0
-margin_bottom = 28.0
+margin_top = -10.0
+margin_right = 12.0
+margin_bottom = 17.0
 texture = ExtResource( 3 )
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+playing = true
+
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, -2 )
 texture = ExtResource( 4 )
 
@@ -67,13 +156,19 @@ shape = SubResource( 1 )
 [node name="Class" type="Node2D" parent="."]
 script = ExtResource( 6 )
 
+[node name="StabEffect" type="AnimatedSprite" parent="Class"]
+position = Vector2( 45, -1 )
+rotation = 0.0034906
+frames = SubResource( 3 )
+
 [node name="Sword" type="Sprite" parent="Class"]
-position = Vector2( 9, -5 )
-rotation = 0.31765
+position = Vector2( 12, 0 )
+rotation = 1.5708
 texture = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Class/Sword"]
 anims/Sword = SubResource( 2 )
+anims/stab = SubResource( 4 )
 
 [node name="CharacterActionsMenu" type="Node2D" parent="Class"]
 
@@ -113,11 +208,9 @@ texture = ExtResource( 11 )
 
 [node name="SwordArea" type="Area2D" parent="Class"]
 
-[node name="SwordCollider" type="CollisionPolygon2D" parent="Class/SwordArea"]
-position = Vector2( 9, -5 )
-rotation = 0.31765
-polygon = PoolVector2Array( -3.46162, -4.12519, 2.21228, 0.325303, 8.18554, 8.88802, 14.8354, 6.70167, 10.762, -2.48571, 0.351236, -8.53678 )
-disabled = true
+[node name="SwordCollider" type="CollisionShape2D" parent="Class/SwordArea"]
+position = Vector2( 39.25, 0 )
+shape = SubResource( 6 )
 
 [node name="KnightTimer1" type="Timer" parent="."]
 one_shot = true
@@ -156,6 +249,7 @@ margin_bottom = 26.0
 texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 2 )
 
+[connection signal="animation_finished" from="Class/StabEffect" to="Class" method="_on_StabEffect_animation_finished"]
 [connection signal="animation_finished" from="Class/Sword/AnimationPlayer" to="Class" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="KnightTimer1" to="." method="_on_KnightTime1_timeout"]
 [connection signal="timeout" from="KnightTimer2" to="." method="_on_KnightTime2_timeout"]

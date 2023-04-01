@@ -16,6 +16,7 @@ var characterActions = [];
 var currentSelectedAction;
 var actionInProgress = false;
 var selectedPosition;
+var canAttack = false;
 
 #Choosers
 onready var choosersGroup = get_node("choosersGroup");
@@ -56,7 +57,9 @@ func _process(_delta):
 	currentSkill = parent.exportCurrentSkill();
 	
 func startAction():
-	if currentCharacter && Input.is_action_just_pressed("test_skill") && !actionInProgress && currentSkill == "BurnFire":
+	if currentCharacter && Input.is_action_just_pressed("test_skill") && !actionInProgress && currentSkill == "BurnFire" && canAttack:
+		canAttack = false;
+		parent.resetTurnProgress();
 		actionInProgress = true
 		animatedSprite.play("cast")
 		selectedPosition = SOURCE_OF_TRUTH.getConvertedMousePosition();
@@ -71,6 +74,7 @@ func startAction():
 		animatedSprite.play("finish_cast");
 		animatedSprite.connect("animation_finished", self, "playDefault");
 		actionInProgress = false;
+		restartTimers();
 
 func playDefault():
 	burnFire();
@@ -91,7 +95,7 @@ func aggregateCharacterActions():
 	currentSelectedAction = characterActions[0].exportName(); 
 		
 func showCharacterActionsMenu():
-	if currentCharacter:
+	if currentCharacter && canAttack:
 		for item in characterActions:
 			item.set_visible(true);
 	else:
@@ -106,9 +110,9 @@ func aggregateChoosers():
 		handChoosers.append(item);		
 
 func showSpecificHandChooser():
-	if currentCharacter:
+	if currentCharacter && canAttack:
 		handChoosers[chooserPosition].set_visible(true);
-	elif !currentCharacter:
+	elif !currentCharacter || !canAttack:
 		handChoosers[chooserPosition].set_visible(false);
 		
 func toggleChooser():
@@ -125,6 +129,9 @@ func toggleChooser():
 			currentSelectedAction = characterActions[chooserPosition].exportName(); 
 	elif Input.is_action_just_pressed("skill_toggle") && !currentCharacter:
 		handChoosers[chooserPosition].set_visible(false);
+		
+func toggleAttackStatus():
+	canAttack = !canAttack;
 		
 func returnCurrentSelectedAction():
 	return currentSelectedAction;

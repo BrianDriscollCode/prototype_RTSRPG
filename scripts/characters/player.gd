@@ -21,7 +21,6 @@ onready var classObject = get_node("Class");
 
 #LevelState
 export var currentCharacter = false;
-var currentCharacterClass;
 onready var levelState = get_node("../../LevelState");
 
 #Turn-based Variables
@@ -77,13 +76,16 @@ func getMousePosition():
 	convertedMousePosition = tileMap.world_to_map(mousePosition);
 	
 func moveCharacter():
-	var globalMousePosition = tileMap.map_to_world(convertedMousePosition) - Vector2(-8, -10);
+	var globalMousePosition = tileMap.map_to_world(convertedMousePosition) - Vector2(-8, -6);
 	var isViablePosition  = checkPositionViable(convertedMousePosition);
 	
 	if Input.is_action_just_pressed("left_click") && isViablePosition && currentCharacter:
 		self.global_position = globalMousePosition;
 		canMove = false;
 		resetTurnProgress();
+		restartTimers();
+		classObject.toggleAttackStatus();
+
 
 func checkPositionViable(position):
 	var isViable = movementTilesNode.exportViableMove();
@@ -96,6 +98,10 @@ func checkPositionViable(position):
 func resetTurnProgress():
 	turnProgressBar.value = 0;
 	canMove = false;
+	if characterState.currentCharacterClass != "Wizard":
+		get_node("Class").restartTimers();
+	
+func restartTimers():
 	get_node("Class").restartTimers();
 	
 func checkIfCurrent(): 
@@ -115,6 +121,9 @@ func setBackground():
 
 func exportCanMove():
 	return canMove;
+	
+func fullReset():
+	canMove = false;
 	
 ### Signals
 
@@ -137,6 +146,7 @@ func _on_KnightTime5_timeout():
 func _on_KnightTime6_timeout():
 	turnProgressBar.value = 100
 	canMove = true;
+	get_node("Class").toggleAttackStatus();
 
 
 ##Rogue Timers
@@ -187,3 +197,4 @@ func _on_WizardTimer9_timeout():
 func _on_WizardTimer10_timeout():
 	turnProgressBar.value = 100
 	canMove = true;
+	get_node("Class").toggleAttackStatus();

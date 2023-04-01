@@ -11,11 +11,13 @@ onready var timer4 = get_node("../KnightTimer4");
 onready var timer5 = get_node("../KnightTimer5");
 onready var timer6 = get_node("../KnightTimer6");
 
-
+var canAttack = false;
 onready var sword = get_node("Sword");
 onready var swordAnimation = get_node("Sword/AnimationPlayer");
 onready var swordCollision= get_node("SwordArea/SwordCollider");
+onready var stabEffect = get_node("StabEffect");
 
+onready var animatedSprite = get_node("../AnimatedSprite");
 
 #choosers
 onready var characterActionsMenu = get_node("CharacterActionsMenu");
@@ -33,18 +35,24 @@ func _ready():
 	aggregateCharacterActions();
 	aggregateChoosers();
 	currentSkill = parent.exportCurrentSkill();
+	sword.set_visible(false);
+	stabEffect.set_visible(false);
+	
 
 	
 func _process(delta):
-	if Input.is_action_just_pressed("test_skill") && currentCharacter && currentSkill == "Sword":
-		swordAnimation.play("Sword");
-		swordCollision.set_disabled(false);
+	if Input.is_action_just_pressed("test_skill") && currentCharacter && currentSkill == "Sword" && canAttack:
+		swordAnimation.play("stab");
+		sword.set_visible(true);
+		animatedSprite.play("stab");
+		parent.resetTurnProgress();
+		toggleAttackStatus();
+		
 	checkIfCurrent();
 	showCharacterActionsMenu();
 	showSpecificHandChooser();
 	toggleChooser();
 	currentSkill = parent.exportCurrentSkill();
-	print(currentSkill)
 		
 func aggregateCharacterActions():
 	for item in characterActionsMenu.get_children():
@@ -52,11 +60,11 @@ func aggregateCharacterActions():
 	currentSelectedAction = characterActions[0].exportName(); 
 		
 func showCharacterActionsMenu():
-	if currentCharacter:
+	if currentCharacter && canAttack == true:
 		for item in characterActions:
 			item.set_visible(true);
 	else:
-		for item in characterActions:
+		for item in characterActions: 
 			item.set_visible(false);
 			
 func checkIfCurrent():
@@ -67,9 +75,9 @@ func aggregateChoosers():
 		handChoosers.append(item);		
 
 func showSpecificHandChooser():
-	if currentCharacter:
+	if currentCharacter && canAttack == true:
 		handChoosers[chooserPosition].set_visible(true);
-	elif !currentCharacter:
+	elif !currentCharacter || canAttack == false:
 		handChoosers[chooserPosition].set_visible(false);
 		
 func toggleChooser():
@@ -87,6 +95,9 @@ func toggleChooser():
 	elif Input.is_action_just_pressed("skill_toggle") && !currentCharacter:
 		handChoosers[chooserPosition].set_visible(false);
 
+func toggleAttackStatus():
+	canAttack = !canAttack;
+
 func returnCharacterClass():
 	return characterClass;
 
@@ -103,4 +114,14 @@ func restartTimers():
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
+	stabEffect.set_visible(true);
+	stabEffect.play("default");
+	stabEffect.frame = 0
+	swordCollision.set_disabled(false);
+
+
+func _on_StabEffect_animation_finished():
+	stabEffect.set_visible(false);
+	animatedSprite.play("default");
 	swordCollision.set_disabled(true);
+	sword.set_visible(false);
