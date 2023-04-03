@@ -19,6 +19,8 @@ func _ready():
 		
 func _process(_delta):
 	chooseCharacter();
+	if Input.is_action_just_pressed("right_click"):
+		print(get_global_mouse_position());
 	
 ### Logic
 func establishParty():

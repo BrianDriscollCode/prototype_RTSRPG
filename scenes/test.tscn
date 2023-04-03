@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tilemap/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://enemies/Ghost.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://tools/LevelState.tscn" type="PackedScene" id=6]
 [ext_resource path="res://player/Wizard.tscn" type="PackedScene" id=7]
 [ext_resource path="res://tools/ViablePositions.tscn" type="PackedScene" id=8]
+[ext_resource path="res://enemies/Goblin.tscn" type="PackedScene" id=9]
 
 [node name="Level" type="Node2D"]
 
@@ -27,10 +28,10 @@
 position = Vector2( 40, 138 )
 
 [node name="Knight" parent="Party" instance=ExtResource( 4 )]
-position = Vector2( 152, 70 )
+position = Vector2( 71, 118 )
 
 [node name="Wizard" parent="Party" instance=ExtResource( 7 )]
-position = Vector2( 40, 41 )
+position = Vector2( 88, 38 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 160, 90 )
@@ -39,3 +40,12 @@ current = true
 [node name="EnemyNPCs" type="Node2D" parent="."]
 
 [node name="Ghost" parent="EnemyNPCs" instance=ExtResource( 2 )]
+
+[node name="Goblin" parent="EnemyNPCs" instance=ExtResource( 9 )]
+position = Vector2( 215, 133 )
+
+[node name="Goblin3" parent="EnemyNPCs" instance=ExtResource( 9 )]
+position = Vector2( 248, 102 )
+
+[node name="Goblin4" parent="EnemyNPCs" instance=ExtResource( 9 )]
+position = Vector2( 264, 53 )

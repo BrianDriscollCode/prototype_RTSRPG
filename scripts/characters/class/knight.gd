@@ -4,6 +4,9 @@ extends Node
 var characterClass = "Knight";
 onready var parent = get_node("../../Knight");
 
+var health = 100;
+onready var healthBar = get_node("../healthProgressBar");
+
 onready var timer1 = get_node("../KnightTimer1");
 onready var timer2 = get_node("../KnightTimer2");
 onready var timer3 = get_node("../KnightTimer3");
@@ -44,6 +47,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("test_skill") && currentCharacter && currentSkill == "Sword" && canAttack:
 		swordAnimation.play("stab");
 		sword.set_visible(true);
+		swordCollision.set_disabled(false);
 		animatedSprite.play("stab");
 		parent.resetTurnProgress();
 		toggleAttackStatus();
@@ -125,3 +129,9 @@ func _on_StabEffect_animation_finished():
 	animatedSprite.play("default");
 	swordCollision.set_disabled(true);
 	sword.set_visible(false);
+	swordCollision.set_disabled(true);
+
+
+func _on_Area2D_area_entered(area):
+	healthBar.value -= 10;
+	health -= 10;

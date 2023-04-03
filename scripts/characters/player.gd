@@ -36,6 +36,8 @@ onready var movementTilesNode = get_node("../../MovementTiles");
 var viablePositions = [];
 
 
+
+
 ### Lifecycle Functions
 func _ready():
 	checkIfCurrent();
@@ -166,7 +168,6 @@ func _on_RogueTimer4_timeout():
 
 ##Wizard Timers
 
-
 func _on_WizardTimer1_timeout():
 	turnProgressBar.value = 10
 
@@ -198,3 +199,7 @@ func _on_WizardTimer10_timeout():
 	turnProgressBar.value = 100
 	canMove = true;
 	get_node("Class").toggleAttackStatus();
+
+
+func _on_Area2D_area_entered(area):
+	pass # Replace with function body.

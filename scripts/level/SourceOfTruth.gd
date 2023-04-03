@@ -9,8 +9,13 @@ var convertedMousePosition;
 
 var party;
 var partyMembers = [];
+var partyMemberPositions = [];
 var characterState = [];
 
+func _ready():
+	getParty();
+	getPartyMembers();
+	getPartyMemberPositions();
 #func _process(_delta):
 #	getCharacterState();
 	
@@ -18,7 +23,7 @@ var characterState = [];
 func getMousePosition():
 	mousePosition = get_viewport().get_mouse_position();
 	return mousePosition;
-
+	
 func getConvertedMousePosition():
 	mousePosition = get_viewport().get_mouse_position();
 	convertedMousePosition = tileMap.world_to_map(mousePosition);
@@ -36,7 +41,14 @@ func getPartyMembers():
 		partyMembers.append(member);
 	
 	return partyMembers;
-
+	
+func getPartyMemberPositions():
+	partyMemberPositions = [];
+	for member in partyMembers:
+		var member_position = tileMap.world_to_map(member.get_global_position());
+		partyMemberPositions.append(member_position);
+	return partyMemberPositions;
+		
 func getTiles():
 	tileArray = [];
 	print(tileMap)

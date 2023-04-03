@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/ui/damage_bar.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/health_bar.png" type="Texture" id=2]
+
+[node name="healthProgressBar" type="TextureProgress"]
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )

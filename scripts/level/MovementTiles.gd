@@ -13,7 +13,6 @@ var mousePosition;
 var convertedMousePosition;
 var highlightTiles = [];
 onready var tileMap = get_node("../TileMap");
-onready var tiles = get_node("../TileMap").get_used_cells();
 
 #Player position and move positions
 var playerPosition;

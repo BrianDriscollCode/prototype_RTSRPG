@@ -8,6 +8,8 @@ onready var parent = get_node("../../Wizard");
 var currentCharacter;
 onready var animatedSprite = get_node("../AnimatedSprite");
 
+var health = 100;
+onready var healthBar = get_node("../healthProgressBar");
 
 #Character Actions
 var actionProgressBar = preload("res://ui/ActionProgressBar.tscn");
@@ -64,7 +66,7 @@ func startAction():
 		animatedSprite.play("cast")
 		selectedPosition = SOURCE_OF_TRUTH.getConvertedMousePosition();
 		var progressBarInstance = actionProgressBar.instance();
-		progressBarInstance.set_position(Vector2(-8,-16));
+		progressBarInstance.set_position(Vector2(-8,-18));
 		parent.add_child(progressBarInstance);
 		progressBarInstance.set_visible(true);
 		var tween = get_tree().create_tween();
@@ -151,3 +153,9 @@ func restartTimers():
 	timer9.start();
 	timer10.start();
 
+
+
+func _on_Area2D_area_entered(area):
+	healthBar.value -= 10;
+	health -= 10;
+	
