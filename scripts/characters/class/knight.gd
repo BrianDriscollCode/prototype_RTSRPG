@@ -4,7 +4,7 @@ extends Node
 var characterClass = "Knight";
 onready var parent = get_node("../../Knight");
 
-var health = 100;
+var health = 10;
 onready var healthBar = get_node("../healthProgressBar");
 
 onready var timer1 = get_node("../KnightTimer1");
@@ -85,7 +85,7 @@ func showSpecificHandChooser():
 		handChoosers[chooserPosition].set_visible(false);
 		
 func toggleChooser():
-	if Input.is_action_just_pressed("skill_toggle") && currentCharacter:
+	if Input.is_action_just_pressed("skill_toggle") && currentCharacter && canAttack:
 		if chooserPosition < 1:
 			handChoosers[chooserPosition].set_visible(false);
 			chooserPosition += 1;
@@ -107,6 +107,12 @@ func returnCharacterClass():
 
 func returnCurrentSelectedAction():
 	return currentSelectedAction;
+	
+func exportHealth(): 
+	return health;
+	
+func exportAttackStatus():
+	return canAttack;
 
 func restartTimers():
 	timer1.start();

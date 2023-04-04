@@ -25,13 +25,13 @@
 [node name="Party" type="Node2D" parent="."]
 
 [node name="Rogue" parent="Party" instance=ExtResource( 5 )]
-position = Vector2( 40, 138 )
+position = Vector2( 217, 36 )
 
 [node name="Knight" parent="Party" instance=ExtResource( 4 )]
-position = Vector2( 71, 118 )
+position = Vector2( 234, 150 )
 
 [node name="Wizard" parent="Party" instance=ExtResource( 7 )]
-position = Vector2( 88, 38 )
+position = Vector2( 216, 102 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 160, 90 )
@@ -42,10 +42,13 @@ current = true
 [node name="Ghost" parent="EnemyNPCs" instance=ExtResource( 2 )]
 
 [node name="Goblin" parent="EnemyNPCs" instance=ExtResource( 9 )]
-position = Vector2( 215, 133 )
+position = Vector2( 296, 151 )
 
 [node name="Goblin3" parent="EnemyNPCs" instance=ExtResource( 9 )]
-position = Vector2( 248, 102 )
+position = Vector2( 296, 23 )
 
 [node name="Goblin4" parent="EnemyNPCs" instance=ExtResource( 9 )]
-position = Vector2( 264, 53 )
+position = Vector2( 296, 67 )
+
+[node name="Goblin5" parent="EnemyNPCs" instance=ExtResource( 9 )]
+position = Vector2( 297, 103 )

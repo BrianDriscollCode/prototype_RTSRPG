@@ -123,8 +123,8 @@ func aggregateViablePlayerMoves(characterClass):
 	
 func checkIfMoveViable(): 
 	var allViableMoves = aggregateViablePlayerMoves(currentCharacterClass);
-	for item in allViableMoves:
-		if convertedMousePosition == item:
+	for move in allViableMoves:
+		if convertedMousePosition == move:
 			viableMove = true;
 
 func exportViableMove():
@@ -135,4 +135,10 @@ func getCanCharacterMove():
 	
 func exportConvertedPlayerPosition():
 	return convertedPlayerPosition;
+	
+func exportViableTilePositions():
+	var viableTilesArray = [];
+	for tile in highlightTiles:
+		viableTilesArray.append(tileMap.world_to_map(tile.get_global_position()))
+	return viableTilesArray;
 		

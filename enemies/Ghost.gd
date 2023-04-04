@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 onready var SOURCE_OF_TRUTH = get_node("../../SOURCE_OF_TRUTH")
-var health = 10;
+var health = 3;
 onready var healthBar = get_node("TextureProgress");
 var currentPosition;
 var currentConvertedPosition;
@@ -14,6 +14,9 @@ var adjacentTiles = [];
 onready var timer3 = get_node("Timer3");
 
 func _ready():
+	var random = (randi() % 4 + 7);
+	print(random)
+	timer3.set_wait_time(random);
 	tiles = tileMap.get_used_cells();	
 	getCurrentPosition();
 	getAdjacentTiles();
@@ -62,6 +65,7 @@ func moveNPC():
 #	print(closestCharacterPosition)
 func getClosestCharacterPosition(enemyPosition: Vector2) -> Vector2:
 	var partyMemberPositions = SOURCE_OF_TRUTH.getPartyMemberPositions()
+	print(partyMemberPositions, " -partyMemberPositions")
 	var closestCharacterPosition = partyMemberPositions[0]
 	var closestDistance = (enemyPosition - closestCharacterPosition).length()
 

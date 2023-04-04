@@ -143,6 +143,7 @@ texture = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
+frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -235,33 +236,28 @@ shape = SubResource( 6 )
 disabled = true
 
 [node name="KnightTimer1" type="Timer" parent="."]
+wait_time = 1.5
 one_shot = true
-autostart = true
 
 [node name="KnightTimer2" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-autostart = true
-
-[node name="KnightTimer3" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
-autostart = true
+
+[node name="KnightTimer3" type="Timer" parent="."]
+wait_time = 4.5
+one_shot = true
 
 [node name="KnightTimer4" type="Timer" parent="."]
-wait_time = 4.0
-one_shot = true
-autostart = true
-
-[node name="KnightTimer5" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-autostart = true
-
-[node name="KnightTimer6" type="Timer" parent="."]
 wait_time = 6.0
 one_shot = true
-autostart = true
+
+[node name="KnightTimer5" type="Timer" parent="."]
+wait_time = 7.5
+one_shot = true
+
+[node name="KnightTimer6" type="Timer" parent="."]
+wait_time = 9.0
+one_shot = true
 
 [connection signal="area_entered" from="Area2D" to="Class" method="_on_Area2D_area_entered"]
 [connection signal="animation_finished" from="Class/StabEffect" to="Class" method="_on_StabEffect_animation_finished"]

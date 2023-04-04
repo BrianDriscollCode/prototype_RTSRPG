@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bow sound_mixdown.mp3-0f0684ff1930a8816d16d7384e203b06.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/bow sound_mixdown.mp3"
+dest_files=[ "res://.import/bow sound_mixdown.mp3-0f0684ff1930a8816d16d7384e203b06.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

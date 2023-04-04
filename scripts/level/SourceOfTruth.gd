@@ -38,15 +38,17 @@ func getPartyMembers():
 	party = get_node("../Party");
 	partyMembers = [];
 	for member in party.get_children():
-		partyMembers.append(member);
+		if !(member.get_node("Class").exportHealth() <= 0):
+			partyMembers.append(member);
 	
 	return partyMembers;
 	
 func getPartyMemberPositions():
 	partyMemberPositions = [];
 	for member in partyMembers:
-		var member_position = tileMap.world_to_map(member.get_global_position());
-		partyMemberPositions.append(member_position);
+		if !(member.get_node("Class").exportHealth() <= 0):
+			var member_position = tileMap.world_to_map(member.get_global_position());
+			partyMemberPositions.append(member_position);
 	return partyMemberPositions;
 		
 func getTiles():

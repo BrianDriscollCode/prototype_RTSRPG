@@ -8,7 +8,7 @@ onready var parent = get_node("../../Wizard");
 var currentCharacter;
 onready var animatedSprite = get_node("../AnimatedSprite");
 
-var health = 100;
+var health = 10;
 onready var healthBar = get_node("../healthProgressBar");
 
 #Character Actions
@@ -30,6 +30,11 @@ var currentSkill;
 var burnFire = preload("res://player/skills/mage/BurnFire.tscn")
 var explosion = preload("res://player/skills/mage/explosion.tscn")
 
+#Animation
+onready var animationPlayer = get_node("../AnimationPlayer");
+
+#Sounds
+onready var HitVoice = get_node("../HitVoice");
 
 #Timers
 onready var timer1 = get_node("../WizardTimer1");
@@ -39,9 +44,6 @@ onready var timer4 = get_node("../WizardTimer4");
 onready var timer5 = get_node("../WizardTimer5");
 onready var timer6 = get_node("../WizardTimer6");
 onready var timer7 = get_node("../WizardTimer7");
-onready var timer8 = get_node("../WizardTimer8");
-onready var timer9 = get_node("../WizardTimer9");
-onready var timer10 = get_node("../WizardTimer10");
 
 func _ready():
 	checkIfCurrent();
@@ -118,7 +120,7 @@ func showSpecificHandChooser():
 		handChoosers[chooserPosition].set_visible(false);
 		
 func toggleChooser():
-	if Input.is_action_just_pressed("skill_toggle") && currentCharacter:
+	if Input.is_action_just_pressed("skill_toggle") && currentCharacter && canAttack:
 		if chooserPosition < 2:
 			handChoosers[chooserPosition].set_visible(false);
 			chooserPosition += 1;
@@ -135,6 +137,12 @@ func toggleChooser():
 func toggleAttackStatus():
 	canAttack = !canAttack;
 		
+func exportHealth(): 
+	return health;	
+	
+func exportAttackStatus():
+	return canAttack;
+		
 func returnCurrentSelectedAction():
 	return currentSelectedAction;
 
@@ -149,13 +157,15 @@ func restartTimers():
 	timer5.start();
 	timer6.start();
 	timer7.start();
-	timer8.start();
-	timer9.start();
-	timer10.start();
 
 
 
 func _on_Area2D_area_entered(area):
 	healthBar.value -= 10;
+	HitVoice.play();
+	animationPlayer.play("hit");
 	health -= 10;
+	if health < 10:
+		animatedSprite.set_playing(false);
+		animationPlayer.play("Death");
 	

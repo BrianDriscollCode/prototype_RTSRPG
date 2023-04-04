@@ -8,18 +8,27 @@ var currentPosition;
 var currentConvertedPosition;
 onready var tileMap = get_node("../../TileMap");
 var tiles;
+var viablePositions;
 var canMove = false;
 var canAttack = false;
 var adjacentTiles = [];
 var arrow = preload("res://projectiles/Arrow.tscn");
 var arrowDirection;
+onready var movementTiles = get_node("../../MovementTiles");
 
 var health = 10;
 onready var healthBar = get_node("TextureProgress");
 
 onready var timer3 = get_node("Timer3");
 
+#Sounds
+onready var shootArrowSound = get_node("shootArrowSound");
+onready var pullBowSound = get_node("pullBowSound");
+
 func _ready():
+	var random = (randi() % 4 + 7);
+	print(random)
+	timer3.set_wait_time(random);
 	tiles = tileMap.get_used_cells();	
 	getCurrentPosition();
 	getAdjacentTiles();
@@ -27,7 +36,7 @@ func _ready():
 	var direction = currentConvertedPosition - closestCharacterPosition;
 	arrowDirection = direction;
 	get_node("Bow").set_visible(false);
-	
+	viablePositions = movementTiles.exportViableTilePositions();
 
 func _process(delta):
 	if health == 1:
@@ -48,17 +57,22 @@ func moveNPC():
 		var closestCharacterPosition = getClosestCharacterPosition(currentConvertedPosition);
 		var direction = currentConvertedPosition - closestCharacterPosition;
 		arrowDirection = direction;
-		var random = randi() % adjacentTiles.size();
-		var chooser;
-		if direction.x > 0:
-			chooser = 1
-		elif direction.x <= 0:
-			chooser = 2
-		var nextPos = tileMap.map_to_world(adjacentTiles[random]) - Vector2(-8, -7);
-		self.set_global_position(nextPos);
+		var nextPos = null;
+		while (nextPos == null):
+			var random = randi() % adjacentTiles.size();
+			var chooser;
+			if direction.x > 0:
+				chooser = 1
+			elif direction.x <= 0:
+				chooser = 2
+			for tilePosition in viablePositions:
+				if tilePosition == adjacentTiles[random]:
+					nextPos = tileMap.map_to_world(adjacentTiles[random]) - Vector2(-8, -7);
+					self.set_global_position(nextPos);
 		canMove = false;
 		restartTimers();
 		getAdjacentTiles();
+		
 		
 
 #func getClosestCharacterPosition():
@@ -73,6 +87,7 @@ func moveNPC():
 #	print(closestCharacterPosition)
 func getClosestCharacterPosition(enemyPosition: Vector2) -> Vector2:
 	var partyMemberPositions = SOURCE_OF_TRUTH.getPartyMemberPositions()
+	print(partyMemberPositions, "party member positon")
 	var closestCharacterPosition = partyMemberPositions[0]
 	var closestDistance = (enemyPosition - closestCharacterPosition).length()
 
@@ -86,14 +101,19 @@ func getClosestCharacterPosition(enemyPosition: Vector2) -> Vector2:
 	
 func returnRandomCharacter() -> Vector2:
 	var partyMemberPositions = SOURCE_OF_TRUTH.getPartyMemberPositions()
-	var randomChooser = randi() % partyMemberPositions.size();
-	return partyMemberPositions[randomChooser]
+	print(partyMemberPositions, "party member positon")
+	if partyMemberPositions.size() > 0:
+		var randomChooser = randi() % partyMemberPositions.size();
+		return partyMemberPositions[randomChooser]
+	return Vector2(0,0)
 	
 			
 
 func takeHit():
-	health -= 1;
-	healthBar.value -= 1;
+	health -= 5;
+	healthBar.value -= 5;
+	if health < 5:
+		self.queue_free();
 
 func getCurrentPosition():
 	currentPosition = self.get_global_position();
@@ -159,8 +179,6 @@ func instanceArrow():
 
 #		**Random Characeter Code
 		currentArrow.look_at(tileMap.map_to_world(randomCharacterPosition))
-
-
 #       LERP
 #		new_Arrow_Direction = (getClosestCharacterPosition(self.global_position) - self.get_global_position())
 #		var angle = currentArrow.get_angle_to(getClosestCharacterPosition(self.global_position));
@@ -192,6 +210,7 @@ func _on_Timer3_timeout():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "ShootArrow":
+		shootArrowSound.play();
 		instanceArrow();
 		animationPlayer.play("sheathe")
 		canAttack = false;

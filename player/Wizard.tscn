@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/sprites/tile_0084.png" type="Texture" id=1]
 [ext_resource path="res://scripts/characters/player.gd" type="Script" id=2]
@@ -28,6 +28,76 @@
 [ext_resource path="res://assets/sprites/animations/wizard/finish_cast/finish_cast1.png" type="Texture" id=26]
 [ext_resource path="res://assets/sprites/animations/wizard/finish_cast/finish_cast2.png" type="Texture" id=27]
 [ext_resource path="res://ui/healthProgressBar.tscn" type="PackedScene" id=28]
+[ext_resource path="res://assets/sounds/Skyclad Sound - This One Guy - Pain Grunt Hoarse.wav" type="AudioStream" id=29]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -100.0, -90.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -2 ), Vector2( 0, -1 ), Vector2( 0, -1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Default"
+
+[sub_resource type="Animation" id=5]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -2 ), Vector2( -1, -2 ), Vector2( 0, -2 ) ]
+}
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -61,9 +131,16 @@ margin_right = 28.0
 margin_bottom = 28.0
 texture = ExtResource( 5 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/Death = SubResource( 3 )
+anims/Default = SubResource( 4 )
+anims/hit = SubResource( 5 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -2 )
 frames = SubResource( 2 )
+frame = 4
 playing = true
 
 [node name="wizard" type="Sprite" parent="."]
@@ -97,11 +174,6 @@ margin_top = -16.0
 margin_right = 8.0
 margin_bottom = -14.0
 value = 100.0
-
-[node name="WizardTimer6" type="Timer" parent="."]
-wait_time = 6.0
-one_shot = true
-autostart = true
 
 [node name="Class" type="Node2D" parent="."]
 script = ExtResource( 6 )
@@ -159,57 +231,42 @@ margin_bottom = 7.0
 texture = ExtResource( 10 )
 
 [node name="WizardTimer1" type="Timer" parent="."]
+wait_time = 1.5
 one_shot = true
-autostart = true
-
-[node name="WizardTimer3" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-autostart = true
 
 [node name="WizardTimer2" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
-autostart = true
+
+[node name="WizardTimer3" type="Timer" parent="."]
+wait_time = 4.5
+one_shot = true
 
 [node name="WizardTimer4" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 6.0
 one_shot = true
-autostart = true
 
 [node name="WizardTimer5" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 7.5
 one_shot = true
-autostart = true
 
-[node name="WizardTimer7" type="Timer" parent="."]
-wait_time = 7.0
-one_shot = true
-autostart = true
-
-[node name="WizardTimer8" type="Timer" parent="."]
-wait_time = 8.0
-one_shot = true
-autostart = true
-
-[node name="WizardTimer9" type="Timer" parent="."]
+[node name="WizardTimer6" type="Timer" parent="."]
 wait_time = 9.0
 one_shot = true
-autostart = true
 
-[node name="WizardTimer10" type="Timer" parent="."]
-wait_time = 10.0
+[node name="WizardTimer7" type="Timer" parent="."]
+wait_time = 10.5
 one_shot = true
-autostart = true
+
+[node name="HitVoice" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 29 )
+volume_db = -6.341
 
 [connection signal="area_entered" from="Area2D" to="Class" method="_on_Area2D_area_entered"]
-[connection signal="timeout" from="WizardTimer6" to="." method="_on_WizardTimer6_timeout"]
 [connection signal="timeout" from="WizardTimer1" to="." method="_on_WizardTimer1_timeout"]
-[connection signal="timeout" from="WizardTimer3" to="." method="_on_WizardTimer3_timeout"]
 [connection signal="timeout" from="WizardTimer2" to="." method="_on_WizardTimer2_timeout"]
+[connection signal="timeout" from="WizardTimer3" to="." method="_on_WizardTimer3_timeout"]
 [connection signal="timeout" from="WizardTimer4" to="." method="_on_WizardTimer4_timeout"]
 [connection signal="timeout" from="WizardTimer5" to="." method="_on_WizardTimer5_timeout"]
+[connection signal="timeout" from="WizardTimer6" to="." method="_on_WizardTimer6_timeout"]
 [connection signal="timeout" from="WizardTimer7" to="." method="_on_WizardTimer7_timeout"]
-[connection signal="timeout" from="WizardTimer8" to="." method="_on_WizardTimer8_timeout"]
-[connection signal="timeout" from="WizardTimer9" to="." method="_on_WizardTimer9_timeout"]
-[connection signal="timeout" from="WizardTimer10" to="." method="_on_WizardTimer10_timeout"]

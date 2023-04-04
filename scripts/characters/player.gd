@@ -25,7 +25,7 @@ onready var levelState = get_node("../../LevelState");
 
 #Turn-based Variables
 onready var turnProgressBar = get_node("TurnProgressBar");
-var canMove = false;
+var canMove = true;
 
 #Movement Variables
 var playerPosition;
@@ -40,6 +40,8 @@ var viablePositions = [];
 
 ### Lifecycle Functions
 func _ready():
+	turnProgressBar.value = 100;
+	get_node("Class").toggleAttackStatus();
 	checkIfCurrent();
 	playerPosition = tileMap.world_to_map(self.global_position);
 	for item in movementTilesNode.get_children():
@@ -78,7 +80,7 @@ func getMousePosition():
 	convertedMousePosition = tileMap.world_to_map(mousePosition);
 	
 func moveCharacter():
-	var globalMousePosition = tileMap.map_to_world(convertedMousePosition) - Vector2(-8, -6);
+	var globalMousePosition = tileMap.map_to_world(convertedMousePosition) - Vector2(-8, -7);
 	var isViablePosition  = checkPositionViable(convertedMousePosition);
 	
 	if Input.is_action_just_pressed("left_click") && isViablePosition && currentCharacter:
@@ -168,38 +170,35 @@ func _on_RogueTimer4_timeout():
 
 ##Wizard Timers
 
+func _on_Area2D_area_entered(area):
+	pass # Replace with function body.
+
+
 func _on_WizardTimer1_timeout():
-	turnProgressBar.value = 10
+	turnProgressBar.value = 14
+
 
 func _on_WizardTimer2_timeout():
-	turnProgressBar.value = 20
+	turnProgressBar.value = 28
+
 
 func _on_WizardTimer3_timeout():
-	turnProgressBar.value = 30
+	turnProgressBar.value = 42
+
 
 func _on_WizardTimer4_timeout():
-	turnProgressBar.value = 40
+	turnProgressBar.value = 56
+
 
 func _on_WizardTimer5_timeout():
-	turnProgressBar.value = 50
-
-func _on_WizardTimer6_timeout():
-	turnProgressBar.value = 60
-
-func _on_WizardTimer7_timeout():
 	turnProgressBar.value = 70
 
-func _on_WizardTimer8_timeout():
-	turnProgressBar.value = 80
 
-func _on_WizardTimer9_timeout():
-	turnProgressBar.value = 90
+func _on_WizardTimer6_timeout():
+	turnProgressBar.value = 85
 
-func _on_WizardTimer10_timeout():
+
+func _on_WizardTimer7_timeout():
 	turnProgressBar.value = 100
 	canMove = true;
 	get_node("Class").toggleAttackStatus();
-
-
-func _on_Area2D_area_entered(area):
-	pass # Replace with function body.

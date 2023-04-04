@@ -33,28 +33,51 @@ func initialSetCurrentCharacter():
 	
 
 func chooseCharacter():
-	if Input.is_action_just_pressed("character_1"):
-		currentCharacter = partyMembers[0];
-		characterNumber = 0;
-		currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass();
-	if Input.is_action_just_pressed("character_2"):
-		currentCharacter = partyMembers[1];
-		characterNumber = 1;
-		currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass();
-	if Input.is_action_just_pressed("character_3"):
-		currentCharacter = partyMembers[2];
-		characterNumber = 2;
-		currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass();
+	establishParty();
 	
-	if Input.is_action_just_pressed("cycle_characters"):
-		if characterNumber < 2:
-			characterNumber += 1;
-			currentCharacter = partyMembers[characterNumber];
-			currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass();
-		else:
-			characterNumber = 0;
-			currentCharacter = partyMembers[characterNumber];
-			currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass();
+	if Input.is_action_just_pressed("cycle_up"):
+		if partyMembers.size() == 3:
+			if characterNumber < 2:
+				characterNumber += 1;
+				currentCharacter = partyMembers[characterNumber];
+				currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass();
+			else:
+				characterNumber = 0;
+				currentCharacter = partyMembers[characterNumber];
+				currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass()
+				
+		if partyMembers.size() == 2:
+			if characterNumber < 1:
+				characterNumber += 1;
+				currentCharacter = partyMembers[characterNumber];
+				currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass();
+			else:
+				characterNumber = 0;
+				currentCharacter = partyMembers[characterNumber];
+				currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass()
+		
+	if Input.is_action_just_pressed("cycle_down"):
+		if partyMembers.size() == 3:
+			if characterNumber < 1:
+				characterNumber = 2;
+				currentCharacter = partyMembers[characterNumber];
+				currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass();
+			else:
+				characterNumber -= 1;
+				currentCharacter = partyMembers[characterNumber];
+				currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass()
+				
+		if partyMembers.size() == 2:
+			if characterNumber < 1:
+				characterNumber += 1;
+				currentCharacter = partyMembers[characterNumber];
+				currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass();
+			else:
+				characterNumber -= 1;
+				currentCharacter = partyMembers[characterNumber];
+				currentCharacterClass = currentCharacter.get_node("Class").returnCharacterClass()
+		
+		
 
 func returnCurrentCharacter():
 	return currentCharacter;
